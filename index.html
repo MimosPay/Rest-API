@@ -1,0 +1,1611 @@
+<!--
+  t_reg = /t\(([^\)]+)\)/
+  ==> 
+  t(:title)
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-e9bde216.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;,&quot;python&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">cURL</a>
+              <a href="#" data-language-name="go">go</a>
+              <a href="#" data-language-name="python">Python</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction-i18n-t-title" class="toc-h1 toc-link" data-title="Introduction - API Reference">Introduction - API Reference</a>
+          </li>
+          <li>
+            <a href="#resources" class="toc-h1 toc-link" data-title="Resources">Resources</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#common-response" class="toc-h2 toc-link" data-title="Common Response">Common Response</a>
+                  </li>
+                  <li>
+                    <a href="#charge" class="toc-h2 toc-link" data-title="Charge">Charge<a name="schema_charge_order"></a></a>
+                  </li>
+                  <li>
+                    <a href="#block-tx-information" class="toc-h2 toc-link" data-title="Block Tx Information">Block Tx Information<a name="schema_charge_order_tx_block"></a></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#charges" class="toc-h1 toc-link" data-title="Charges">Charges</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-charge" class="toc-h2 toc-link" data-title="Create a charge">Create a charge</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-charge" class="toc-h2 toc-link" data-title="Update a charge">Update a charge</a>
+                  </li>
+                  <li>
+                    <a href="#show-a-charge" class="toc-h2 toc-link" data-title="Show a charge">Show a charge</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://w.dev.mimos.io/commerce'>Sign Up to get sandbox API credentials</a></li>
+            <li><a href='https://github.com/MimosPay/Rest-API'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction-i18n-t-title'>Introduction - API Reference</h1>
+<p>The Mimos Commerce API provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.</p>
+
+<ul>
+<li><a href="https://w.mimos.io/commerce/legal/terms-of-service">Terms of service</a></li>
+<li><a href="https://mimos.io/">License - Commercial Use License</a></li>
+</ul>
+
+<p>Base URL: <code>https://api.mimos.io/crypto-checkout/</code></p>
+<h1 id='resources'>Resources</h1><h2 id='common-response'>Common Response</h2>
+<blockquote>
+<p>Example,</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>none</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>error</td>
+<td>object</td>
+<td>none</td>
+</tr>
+<tr>
+<td>status</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h2 id='charge'>Charge<a name="schema_charge_order"></a></h2>
+<blockquote>
+<p>Example,</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"merchant_id"</span><span class="p">:</span><span class="s2">"117510825734795264"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order_id"</span><span class="p">:</span><span class="s2">"34177479978479616"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order_identifier"</span><span class="p">:</span><span class="s2">"3v9YNZzCpG4arZrHsJbCpc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_order_id"</span><span class="p">:</span><span class="s2">"ueyjedsz95x4v4l51k4d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"HuaWei P40"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"CNY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="s2">"ethereum"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"FIXED_VALUE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1593761382740"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="s2">"1593761682740"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"COMPLETE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sub_state"</span><span class="p">:</span><span class="s2">"OVERPAID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state_code"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sub_state_code"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addresses"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"ethereum"</span><span class="p">:</span><span class="s2">"0x500B66C6FF6c0917020D0bE6F1f9482cF535C8ae"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payments"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"network"</span><span class="p">:</span><span class="s2">"ethereum"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_hash"</span><span class="p">:</span><span class="s2">"0x9978bc4c44a9a14151d9cfeed557ab51feb6548b2c8f101b44a67a92091f1df7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tx_index"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from_address"</span><span class="p">:</span><span class="s2">"TODO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.001876"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_amount"</span><span class="p">:</span><span class="s2">"3.01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"COMPLETE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state_code"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"detected_at"</span><span class="p">:</span><span class="s2">"1593761577651"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="s2">"1593761641110"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"block"</span><span class="p">:{</span><span class="w">
+          </span><span class="nl">"network_id"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"height"</span><span class="p">:</span><span class="s2">"2980446"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"hash"</span><span class="p">:</span><span class="s2">"0xdfca138018a58ef29606084d59ec3d1b48221c71b2c52ae7904617a7c3a77b0b"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tx_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"1593761577651"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"required_confirmed"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"accumulated_confirmed"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"forked"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"best_height"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\"</span><span class="s2">image_url</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">http://your.image.jpg</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="s2">"https://w.mimos.io/crypto-checkout/3v9YNZzCpG4arZrHsJbCpc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_info"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"bill_address"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"bill_address"</span><span class="p">:</span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipient_name"</span><span class="p">:</span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unresolved_id"</span><span class="p">:</span><span class="s2">"34178719055572992"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"crypto_amount"</span><span class="p">:</span><span class="s2">"0.001872"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"crypto_currency"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>charge_pricing</td>
+<td>map<string, object></td>
+<td>none</td>
+</tr>
+<tr>
+<td>» <strong>additionalProperties</strong></td>
+<td><a href="#schema_charge_order_price">Charge Prices</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>object</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» <strong>additionalProperties</strong></td>
+<td>map<string, string></td>
+<td>none</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>crypto_amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>payments</td>
+<td>[Charge Payments<a href="#schema_charge_order_payment"></a>]</td>
+<td>none</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>merchant_id</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>expired_at</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>refunds</td>
+<td>[Charge Refunds<a href="#schema_charge_order_refund"></a>]</td>
+<td>none</td>
+</tr>
+<tr>
+<td>checkout_id</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>crypto_currency</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>sub_state</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>unresolved_id</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>remain_amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>bill_address</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>charge_url</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>order_identifier</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>sub_state_code</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>paid_base_amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>paid_amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>external_order_id</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>customer_name</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>state_code</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>recipient_name</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>cancel_url</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>redirect_url</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>required_info</td>
+<td><a href="#schema_charge_order_required">Charge Rquried</a></td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h3 id='charge-price'>Charge Price<a name="schema_charge_order_price"></a></h3>
+<blockquote>
+<p>Example,</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.232"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>last_update</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h3 id='charge-payments'>Charge Payments<a name="schema_charge_order_payment"></a></h3>
+<blockquote>
+<p>Example,</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="s2">"ethereum"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tx_hash"</span><span class="p">:</span><span class="s2">"0x9978bc4c44a9a14151d9cfeed557ab51feb6548b2c8f101b44a67a92091f1df7"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tx_index"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"from_address"</span><span class="p">:</span><span class="s2">"0x0ad3355b3023f73a2c443fe2c8440735d1589596"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.001876"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_amount"</span><span class="p">:</span><span class="s2">"3.01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"COMPLETE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state_code"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"detected_at"</span><span class="p">:</span><span class="s2">"1593761577651"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="s2">"1593761641110"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"block"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"network_id"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"height"</span><span class="p">:</span><span class="s2">"2980446"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hash"</span><span class="p">:</span><span class="s2">"0xdfca138018a58ef29606084d59ec3d1b48221c71b2c52ae7904617a7c3a77b0b"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tx_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"1593761577651"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_confirmed"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accumulated_confirmed"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"forked"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"best_height"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>base_currency</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>tx_hash</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>network</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>detected_at</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>base_amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>block</td>
+<td><a href="#schema_charge_order_tx_block">Block Tx</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>tx_index</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>state_code</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>confirmed_at</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>from_address</td>
+<td>string</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h3 id='charge-refund'>Charge Refund<a name="schema_charge_order_refund"></a></h3>
+<blockquote>
+<p>Exmaple,</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="s2">"ethereum"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"to_address"</span><span class="p">:</span><span class="s2">"0x0Ad3355B3023f73a2C443Fe2C8440735d1589596"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"0.005866"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state_code"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"detected_at"</span><span class="p">:</span><span class="s2">"1594043557364"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tx_hash"</span><span class="p">:</span><span class="s2">"0x6930b6d590c1468c479bd30dc3bfa1c7170cbc1834c2cfd47ac57ad7aaf82cf1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tx_index"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"block"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"network_id"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"height"</span><span class="p">:</span><span class="s2">"2999165"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hash"</span><span class="p">:</span><span class="s2">"0xc057e1d2fa53b8ff64c272bbd4057bd5778d8b43a4e367839caaded051ddadae"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tx_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"1594043557252"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_confirmed"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accumulated_confirmed"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"forked"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"best_height"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>detected_at</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>number</td>
+<td>none</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>tx_hash</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>block</td>
+<td><a href="#schema_charge_order_tx_block">Block Tx</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>state_code</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>confirmed_at</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>tx_index</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>network</td>
+<td>string</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h3 id='charge-required-infomations'>Charge Required Infomations<a name="schema_charge_order_required"></a></h3>
+<blockquote>
+<p>Example,</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bill_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>customer_name</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>bill_address</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td>string</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h2 id='block-tx-information'>Block Tx Information<a name="schema_charge_order_tx_block"></a></h2>
+<blockquote>
+<p>Example,</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"network_id"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"height"</span><span class="p">:</span><span class="s2">"2843414"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"hash"</span><span class="p">:</span><span class="s2">"0xdc9df24a26af920ebdb9a15e8c93c504247e9a055620a4d083858f7e91120a9a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tx_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"1591704974541"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"required_confirmed"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accumulated_confirmed"</span><span class="p">:</span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"forked"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"best_height"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>network_id</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>tx_count</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>accumulated_confirmed</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>best_height</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>prev_hash</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>required_confirmed</td>
+<td>integer(int32)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>best_hash</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>time</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>next_hash</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>forked</td>
+<td>boolean</td>
+<td>none</td>
+</tr>
+<tr>
+<td>height</td>
+<td>integer(int64)</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h1 id='charges'>Charges</h1><h2 id='create-a-charge'>Create a charge</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/charges <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-MM-APP-ID: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-MM-TIMESTAMP: 0'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-MM-SIGNATURE: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-MM-NONCE: string'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+        <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+        <span class="s">"X-MM-APP-ID"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"X-MM-TIMESTAMP"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"0"</span><span class="p">},</span>
+        <span class="s">"X-MM-SIGNATURE"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"X-MM-NONCE"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://api.mimos.io/crypto-checkout/v1/charges"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'X-MM-APP-ID'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'X-MM-TIMESTAMP'</span><span class="p">:</span> <span class="s">'0'</span><span class="p">,</span>
+  <span class="s">'X-MM-SIGNATURE'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'X-MM-NONCE'</span><span class="p">:</span> <span class="s">'string'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://api.mimos.io/crypto-checkout/v1/charges'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /v1/charges</code></p>
+<h4 id='request-parameters'>Request Parameters</h4>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-MM-APP-ID</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>X-MM-TIMESTAMP</td>
+<td>header</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>X-MM-SIGNATURE</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>X-MM-NONCE</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemachargecreatedto">ChargeCreateDto</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» metadata</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» price</td>
+<td>body</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» external_order_id</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» currency</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h3 id='http-responses'>HTTP Responses</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
+<td>Created</td>
+<td><a href="#schemaapiresponsechargeorderdto">ApiResponseChargeOrderDto</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Not Found</td>
+<td><a href="#schemaapiresponse">ApiResponse</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaapiresponse">ApiResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id='update-a-charge'>Update a charge</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> PUT https://api.mimos.io/crypto-checkout/v1/charges/<span class="o">{</span>orderIdentifier<span class="o">}</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+        <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="s">"https://api.mimos.io/crypto-checkout/v1/charges/{orderIdentifier}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">'https://api.mimos.io/crypto-checkout/v1/charges/{orderIdentifier}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PUT /v1/charges/{orderIdentifier}</code></p>
+<h4 id='request-parameters-2'>Request Parameters</h4>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bill_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderIdentifier</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemachargepublicupdatedto">ChargePublicUpdateDto</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» customer_name</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» bill_address</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» payment_method</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h3 id='http-responses-2'>HTTP Responses</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td><a href="#schemaapiresponsechargeorderdto">ApiResponseChargeOrderDto</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Not Found</td>
+<td><a href="#schemaapiresponse">ApiResponse</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaapiresponse">ApiResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id='show-a-charge'>Show a charge</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET https://api.mimos.io/crypto-checkout/v1/charges/<span class="o">{</span>orderIdentifier<span class="o">}</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"https://api.mimos.io/crypto-checkout/v1/charges/{orderIdentifier}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://api.mimos.io/crypto-checkout/v1/charges/{orderIdentifier}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+<span class="c1">### HTTP Request
+</span>
+<span class="sb">`GET /v1/charges/{orderIdentifier}`</span>
+
+<span class="c1">#### Request Parameters
+</span>
+<span class="o">|</span><span class="n">Name</span><span class="o">|</span><span class="n">In</span><span class="o">|</span><span class="n">Type</span><span class="o">|</span><span class="n">Required</span><span class="o">|</span><span class="n">Description</span><span class="o">|</span>
+<span class="o">|---|---|---|---|---|</span>
+<span class="o">|</span><span class="n">orderIdentifier</span><span class="o">|</span><span class="n">path</span><span class="o">|</span><span class="n">string</span><span class="o">|</span><span class="n">true</span><span class="o">|</span><span class="n">none</span><span class="o">|</span>
+<span class="o">|</span><span class="n">showDetails</span><span class="o">|</span><span class="n">query</span><span class="o">|</span><span class="n">boolean</span><span class="o">|</span><span class="n">false</span><span class="o">|</span><span class="n">none</span><span class="o">|</span>
+
+<span class="o">&gt;</span> <span class="n">Example</span> <span class="n">responses</span>
+
+<span class="o">&gt;</span> <span class="mi">200</span> <span class="n">Response</span>
+
+<span class="sb">``</span><span class="err">`</span><span class="n">json</span>
+<span class="p">{</span>
+  <span class="s">"code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">"charge_pricing"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">"property1"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"last_update"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"currency"</span><span class="p">:</span> <span class="s">"string"</span>
+      <span class="p">},</span>
+      <span class="s">"property2"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"last_update"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"currency"</span><span class="p">:</span> <span class="s">"string"</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">"addresses"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">"property1"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+      <span class="s">"property2"</span><span class="p">:</span> <span class="s">"string"</span>
+    <span class="p">},</span>
+    <span class="s">"metadata"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"crypto_amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"payments"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">"base_currency"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"tx_hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"network"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"detected_at"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"base_amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"currency"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"block"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">"network_id"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"tx_count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"accumulated_confirmed"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"best_height"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"prev_hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+          <span class="s">"required_confirmed"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"best_hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+          <span class="s">"time"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"next_hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+          <span class="s">"hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+          <span class="s">"forked"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s">"height"</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s">"state"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"tx_index"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"state_code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"confirmed_at"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"from_address"</span><span class="p">:</span> <span class="s">"string"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s">"created_at"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"merchant_id"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"expired_at"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"type"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"refunds"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">"detected_at"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"fee"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"to_address"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"currency"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"tx_hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"block"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">"network_id"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"tx_count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"accumulated_confirmed"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"best_height"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"prev_hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+          <span class="s">"required_confirmed"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"best_hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+          <span class="s">"time"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s">"next_hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+          <span class="s">"hash"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+          <span class="s">"forked"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s">"height"</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s">"state"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+        <span class="s">"state_code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"confirmed_at"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"tx_index"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">"network"</span><span class="p">:</span> <span class="s">"string"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s">"checkout_id"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"state"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"payment_method"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"crypto_currency"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"sub_state"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"unresolved_id"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"remain_amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"bill_address"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"charge_url"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"order_identifier"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"sub_state_code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"paid_base_amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"paid_amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"external_order_id"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"customer_name"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"state_code"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"recipient_name"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"order_id"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"cancel_url"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"redirect_url"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+    <span class="s">"required_info"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">"customer_name"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s">"bill_address"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s">"payment_method"</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s">"message"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
+  <span class="s">"error"</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="s">"status"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div><h3 id='http-responses-3'>HTTP Responses</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td><a href="#schemaapiresponsechargeorderdto">ApiResponseChargeOrderDto</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Not Found</td>
+<td><a href="#schemaapiresponse">ApiResponse</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemaapiresponse">ApiResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">cURL</a>
+                <a href="#" data-language-name="go">go</a>
+                <a href="#" data-language-name="python">Python</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
