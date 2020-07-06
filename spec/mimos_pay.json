@@ -1,0 +1,614 @@
+{
+  "components": {
+    "schemas": {
+      "ChargeOrderDto": {
+        "type": "object",
+        "properties": {
+          "charge_pricing": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ChargeOrderPrice"
+            },
+            "type": "object"
+          },
+          "addresses": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "metadata": {
+            "type": "string"
+          },
+          "crypto_amount": {
+            "type": "number"
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChargeOrderPayment"
+            }
+          },
+          "created_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "merchant_id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "expired_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "refunds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChargeOrderRefund"
+            }
+          },
+          "checkout_id": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "payment_method": {
+            "type": "string"
+          },
+          "crypto_currency": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "sub_state": {
+            "type": "string"
+          },
+          "unresolved_id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "remain_amount": {
+            "type": "number"
+          },
+          "bill_address": {
+            "type": "string"
+          },
+          "charge_url": {
+            "type": "string"
+          },
+          "order_identifier": {
+            "type": "string"
+          },
+          "sub_state_code": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "paid_base_amount": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "paid_amount": {
+            "type": "number"
+          },
+          "external_order_id": {
+            "type": "string"
+          },
+          "customer_name": {
+            "type": "string"
+          },
+          "state_code": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "recipient_name": {
+            "type": "string"
+          },
+          "order_id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "cancel_url": {
+            "type": "string"
+          },
+          "redirect_url": {
+            "type": "string"
+          },
+          "required_info": {
+            "$ref": "#/components/schemas/ChargeOrderRequired"
+          }
+        }
+      },
+      "ChargeOrderPayment": {
+        "type": "object",
+        "properties": {
+          "base_currency": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "tx_hash": {
+            "type": "string"
+          },
+          "network": {
+            "type": "string"
+          },
+          "detected_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "base_amount": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "block": {
+            "$ref": "#/components/schemas/ChargeOrderTxBlock"
+          },
+          "state": {
+            "type": "string"
+          },
+          "tx_index": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "state_code": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "confirmed_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "from_address": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseChargeOrderDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ChargeOrderDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "object"
+          },
+          "status": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "ChargeOrderTxBlock": {
+        "type": "object",
+        "properties": {
+          "network_id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "tx_count": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "accumulated_confirmed": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "best_height": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "prev_hash": {
+            "type": "string"
+          },
+          "required_confirmed": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "best_hash": {
+            "type": "string"
+          },
+          "time": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "next_hash": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "forked": {
+            "type": "boolean"
+          },
+          "height": {
+            "format": "int64",
+            "type": "integer"
+          }
+        }
+      },
+      "ChargeOrderPrice": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "last_update": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "currency": {
+            "type": "string"
+          }
+        }
+      },
+      "ChargePublicUpdateDto": {
+        "type": "object",
+        "properties": {
+          "customer_name": {
+            "type": "string"
+          },
+          "bill_address": {
+            "type": "string"
+          },
+          "payment_method": {
+            "type": "string"
+          }
+        }
+      },
+      "ChargeOrderRefund": {
+        "type": "object",
+        "properties": {
+          "detected_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "fee": {
+            "type": "number"
+          },
+          "to_address": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "tx_hash": {
+            "type": "string"
+          },
+          "block": {
+            "$ref": "#/components/schemas/ChargeOrderTxBlock"
+          },
+          "state": {
+            "type": "string"
+          },
+          "state_code": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "confirmed_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "tx_index": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "network": {
+            "type": "string"
+          }
+        }
+      },
+      "ChargeOrderRequired": {
+        "type": "object",
+        "properties": {
+          "customer_name": {
+            "type": "boolean"
+          },
+          "bill_address": {
+            "type": "boolean"
+          },
+          "payment_method": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "data": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "object"
+          },
+          "status": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "ChargeCreateDto": {
+        "type": "object",
+        "required": [
+          "currency",
+          "external_order_id",
+          "name",
+          "price"
+        ],
+        "properties": {
+          "metadata": {
+            "minLength": 0,
+            "type": "string",
+            "maxLength": 1024
+          },
+          "price": {
+            "maximum": 1000000000,
+            "type": "number",
+            "minimum": 0
+          },
+          "name": {
+            "type": "string"
+          },
+          "external_order_id": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Generated server url",
+      "url": "http://localhost:8081/crypto-checkout"
+    }
+  ],
+  "openapi": "3.0.1",
+  "paths": {
+    "/v1/charges/{orderIdentifier}": {
+      "get": {
+        "operationId": "getCheckout",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseChargeOrderDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orderIdentifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "showDetails",
+            "required": false
+          }
+        ],
+        "tags": [
+          "merchant-charge-controller"
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChargePublicUpdateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "operationId": "completeCheckoutInformation",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseChargeOrderDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orderIdentifier",
+            "required": true
+          }
+        ],
+        "tags": [
+          "merchant-charge-controller"
+        ]
+      }
+    },
+    "/v1/charges": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChargeCreateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "operationId": "createOrder",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseChargeOrderDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-MM-APP-ID",
+            "required": true
+          },
+          {
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "in": "header",
+            "name": "X-MM-TIMESTAMP",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-MM-SIGNATURE",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-MM-NONCE",
+            "required": true
+          }
+        ],
+        "tags": [
+          "merchant-charge-controller"
+        ]
+      }
+    }
+  },
+  "info": {
+    "license": {
+      "name": "Commercial Use License",
+      "url": "https://mimos.io/"
+    },
+    "description": "The Mimos Commerce API provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.",
+    "termsOfService": "https://w.mimos.io/commerce/legal/terms-of-service",
+    "title": "Mimos Commerce API",
+    "version": "v1.0.0"
+  }
+}
