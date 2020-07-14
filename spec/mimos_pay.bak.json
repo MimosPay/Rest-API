@@ -86,6 +86,10 @@
           "order_identifier": {
             "type": "string"
           },
+          "sub_state_code": {
+            "format": "int32",
+            "type": "integer"
+          },
           "paid_base_amount": {
             "type": "number"
           },
@@ -100,6 +104,10 @@
           },
           "customer_name": {
             "type": "string"
+          },
+          "state_code": {
+            "format": "int32",
+            "type": "integer"
           },
           "recipient_name": {
             "type": "string"
@@ -125,18 +133,21 @@
           "base_currency": {
             "type": "string"
           },
-          "detected_at": {
-            "format": "int64",
-            "type": "integer"
-          },
           "amount": {
-            "type": "number"
-          },
-          "base_amount": {
             "type": "number"
           },
           "tx_hash": {
             "type": "string"
+          },
+          "network": {
+            "type": "string"
+          },
+          "detected_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "base_amount": {
+            "type": "number"
           },
           "currency": {
             "type": "string"
@@ -151,11 +162,15 @@
             "format": "int32",
             "type": "integer"
           },
+          "state_code": {
+            "format": "int32",
+            "type": "integer"
+          },
           "confirmed_at": {
             "format": "int64",
             "type": "integer"
           },
-          "network": {
+          "from_address": {
             "type": "string"
           }
         }
@@ -189,8 +204,16 @@
             "format": "int64",
             "type": "integer"
           },
+          "tx_count": {
+            "format": "int32",
+            "type": "integer"
+          },
           "accumulated_confirmed": {
             "format": "int32",
+            "type": "integer"
+          },
+          "best_height": {
+            "format": "int64",
             "type": "integer"
           },
           "prev_hash": {
@@ -227,6 +250,10 @@
         "properties": {
           "amount": {
             "type": "number"
+          },
+          "last_update": {
+            "format": "int64",
+            "type": "integer"
           },
           "currency": {
             "type": "string"
@@ -274,6 +301,10 @@
           },
           "state": {
             "type": "string"
+          },
+          "state_code": {
+            "format": "int32",
+            "type": "integer"
           },
           "confirmed_at": {
             "format": "int64",
@@ -575,7 +606,7 @@
       "name": "Commercial Use License",
       "url": "https://mimos.io/"
     },
-    "description": "The Mimos Commerce provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.",
+    "description": "The Mimos Commerce API provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.",
     "termsOfService": "https://w.mimos.io/commerce/legal/terms-of-service",
     "title": "Mimos Commerce API",
     "version": "v1.0.0"

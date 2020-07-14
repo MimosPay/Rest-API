@@ -2,12 +2,16 @@
 title: Mimos Commerce API v1.0.0
 language_tabs:
   - shell: cURL
-  - go: go
+  - nodejs: NodeJS
+  - go: Go
   - python: Python
+  - java: Java
 language_clients:
   - shell: ""
+  - nodejs: ""
   - go: ""
   - python: ""
+  - java: ""
 toc_footers: []
 includes: []
 search: true
@@ -22,7 +26,7 @@ headingLevel: 2
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-The Mimos Commerce API provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.
+The Mimos Commerce provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.
 
 Base URLs:
 
@@ -44,6 +48,27 @@ License: <a href="https://mimos.io/">Commercial Use License</a>
 # You can also use wget
 curl -X GET http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier} \
   -H 'Accept: application/json'
+
+```
+
+```nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -84,6 +109,23 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `GET /v1/charges/{orderIdentifier}`
 
 <h3 id="getcheckout-parameters">Parameters</h3>
@@ -104,12 +146,10 @@ print(r.json())
     "charge_pricing": {
       "property1": {
         "amount": 0,
-        "last_update": 0,
         "currency": "string"
       },
       "property2": {
         "amount": 0,
-        "last_update": 0,
         "currency": "string"
       }
     },
@@ -122,17 +162,14 @@ print(r.json())
     "payments": [
       {
         "base_currency": "string",
-        "amount": 0,
-        "tx_hash": "string",
-        "network": "string",
         "detected_at": 0,
+        "amount": 0,
         "base_amount": 0,
+        "tx_hash": "string",
         "currency": "string",
         "block": {
           "network_id": 0,
-          "tx_count": 0,
           "accumulated_confirmed": 0,
-          "best_height": 0,
           "prev_hash": "string",
           "required_confirmed": 0,
           "best_hash": "string",
@@ -144,9 +181,8 @@ print(r.json())
         },
         "state": "string",
         "tx_index": 0,
-        "state_code": 0,
         "confirmed_at": 0,
-        "from_address": "string"
+        "network": "string"
       }
     ],
     "created_at": 0,
@@ -163,9 +199,7 @@ print(r.json())
         "tx_hash": "string",
         "block": {
           "network_id": 0,
-          "tx_count": 0,
           "accumulated_confirmed": 0,
-          "best_height": 0,
           "prev_hash": "string",
           "required_confirmed": 0,
           "best_hash": "string",
@@ -176,7 +210,6 @@ print(r.json())
           "height": 0
         },
         "state": "string",
-        "state_code": 0,
         "confirmed_at": 0,
         "tx_index": 0,
         "network": "string"
@@ -194,13 +227,11 @@ print(r.json())
     "bill_address": "string",
     "charge_url": "string",
     "order_identifier": "string",
-    "sub_state_code": 0,
     "paid_base_amount": 0,
     "name": "string",
     "paid_amount": 0,
     "external_order_id": "string",
     "customer_name": "string",
-    "state_code": 0,
     "recipient_name": "string",
     "order_id": 0,
     "cancel_url": "string",
@@ -243,6 +274,32 @@ curl -X PUT http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier} \
 
 ```
 
+```nodejs
+const fetch = require('node-fetch');
+const inputBody = {
+  "customer_name": "string",
+  "bill_address": "string",
+  "payment_method": "string"
+};
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}',
+{
+  method: 'PUT',
+  body: JSON.stringify(inputBody),
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
 ```go
 package main
 
@@ -282,6 +339,23 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("PUT");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `PUT /v1/charges/{orderIdentifier}`
 
 > Body parameter
@@ -315,12 +389,10 @@ print(r.json())
     "charge_pricing": {
       "property1": {
         "amount": 0,
-        "last_update": 0,
         "currency": "string"
       },
       "property2": {
         "amount": 0,
-        "last_update": 0,
         "currency": "string"
       }
     },
@@ -333,17 +405,14 @@ print(r.json())
     "payments": [
       {
         "base_currency": "string",
-        "amount": 0,
-        "tx_hash": "string",
-        "network": "string",
         "detected_at": 0,
+        "amount": 0,
         "base_amount": 0,
+        "tx_hash": "string",
         "currency": "string",
         "block": {
           "network_id": 0,
-          "tx_count": 0,
           "accumulated_confirmed": 0,
-          "best_height": 0,
           "prev_hash": "string",
           "required_confirmed": 0,
           "best_hash": "string",
@@ -355,9 +424,8 @@ print(r.json())
         },
         "state": "string",
         "tx_index": 0,
-        "state_code": 0,
         "confirmed_at": 0,
-        "from_address": "string"
+        "network": "string"
       }
     ],
     "created_at": 0,
@@ -374,9 +442,7 @@ print(r.json())
         "tx_hash": "string",
         "block": {
           "network_id": 0,
-          "tx_count": 0,
           "accumulated_confirmed": 0,
-          "best_height": 0,
           "prev_hash": "string",
           "required_confirmed": 0,
           "best_hash": "string",
@@ -387,7 +453,6 @@ print(r.json())
           "height": 0
         },
         "state": "string",
-        "state_code": 0,
         "confirmed_at": 0,
         "tx_index": 0,
         "network": "string"
@@ -405,13 +470,11 @@ print(r.json())
     "bill_address": "string",
     "charge_url": "string",
     "order_identifier": "string",
-    "sub_state_code": 0,
     "paid_base_amount": 0,
     "name": "string",
     "paid_amount": 0,
     "external_order_id": "string",
     "customer_name": "string",
-    "state_code": 0,
     "recipient_name": "string",
     "order_id": 0,
     "cancel_url": "string",
@@ -455,6 +518,39 @@ curl -X POST http://localhost:8081/crypto-checkout/v1/charges \
   -H 'X-MM-TIMESTAMP: 0' \
   -H 'X-MM-SIGNATURE: string' \
   -H 'X-MM-NONCE: string'
+
+```
+
+```nodejs
+const fetch = require('node-fetch');
+const inputBody = {
+  "metadata": "string",
+  "price": 0,
+  "name": "string",
+  "external_order_id": "string",
+  "currency": "string",
+  "type": "string"
+};
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'X-MM-APP-ID':'string',
+  'X-MM-TIMESTAMP':'0',
+  'X-MM-SIGNATURE':'string',
+  'X-MM-NONCE':'string'
+};
+
+fetch('http://localhost:8081/crypto-checkout/v1/charges',
+{
+  method: 'POST',
+  body: JSON.stringify(inputBody),
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -505,6 +601,23 @@ print(r.json())
 
 ```
 
+```java
+URL obj = new URL("http://localhost:8081/crypto-checkout/v1/charges");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
 `POST /v1/charges`
 
 > Body parameter
@@ -547,12 +660,10 @@ print(r.json())
     "charge_pricing": {
       "property1": {
         "amount": 0,
-        "last_update": 0,
         "currency": "string"
       },
       "property2": {
         "amount": 0,
-        "last_update": 0,
         "currency": "string"
       }
     },
@@ -565,17 +676,14 @@ print(r.json())
     "payments": [
       {
         "base_currency": "string",
-        "amount": 0,
-        "tx_hash": "string",
-        "network": "string",
         "detected_at": 0,
+        "amount": 0,
         "base_amount": 0,
+        "tx_hash": "string",
         "currency": "string",
         "block": {
           "network_id": 0,
-          "tx_count": 0,
           "accumulated_confirmed": 0,
-          "best_height": 0,
           "prev_hash": "string",
           "required_confirmed": 0,
           "best_hash": "string",
@@ -587,9 +695,8 @@ print(r.json())
         },
         "state": "string",
         "tx_index": 0,
-        "state_code": 0,
         "confirmed_at": 0,
-        "from_address": "string"
+        "network": "string"
       }
     ],
     "created_at": 0,
@@ -606,9 +713,7 @@ print(r.json())
         "tx_hash": "string",
         "block": {
           "network_id": 0,
-          "tx_count": 0,
           "accumulated_confirmed": 0,
-          "best_height": 0,
           "prev_hash": "string",
           "required_confirmed": 0,
           "best_hash": "string",
@@ -619,7 +724,6 @@ print(r.json())
           "height": 0
         },
         "state": "string",
-        "state_code": 0,
         "confirmed_at": 0,
         "tx_index": 0,
         "network": "string"
@@ -637,13 +741,11 @@ print(r.json())
     "bill_address": "string",
     "charge_url": "string",
     "order_identifier": "string",
-    "sub_state_code": 0,
     "paid_base_amount": 0,
     "name": "string",
     "paid_amount": 0,
     "external_order_id": "string",
     "customer_name": "string",
-    "state_code": 0,
     "recipient_name": "string",
     "order_id": 0,
     "cancel_url": "string",
@@ -686,12 +788,10 @@ This operation does not require authentication
   "charge_pricing": {
     "property1": {
       "amount": 0,
-      "last_update": 0,
       "currency": "string"
     },
     "property2": {
       "amount": 0,
-      "last_update": 0,
       "currency": "string"
     }
   },
@@ -704,17 +804,14 @@ This operation does not require authentication
   "payments": [
     {
       "base_currency": "string",
-      "amount": 0,
-      "tx_hash": "string",
-      "network": "string",
       "detected_at": 0,
+      "amount": 0,
       "base_amount": 0,
+      "tx_hash": "string",
       "currency": "string",
       "block": {
         "network_id": 0,
-        "tx_count": 0,
         "accumulated_confirmed": 0,
-        "best_height": 0,
         "prev_hash": "string",
         "required_confirmed": 0,
         "best_hash": "string",
@@ -726,9 +823,8 @@ This operation does not require authentication
       },
       "state": "string",
       "tx_index": 0,
-      "state_code": 0,
       "confirmed_at": 0,
-      "from_address": "string"
+      "network": "string"
     }
   ],
   "created_at": 0,
@@ -745,9 +841,7 @@ This operation does not require authentication
       "tx_hash": "string",
       "block": {
         "network_id": 0,
-        "tx_count": 0,
         "accumulated_confirmed": 0,
-        "best_height": 0,
         "prev_hash": "string",
         "required_confirmed": 0,
         "best_hash": "string",
@@ -758,7 +852,6 @@ This operation does not require authentication
         "height": 0
       },
       "state": "string",
-      "state_code": 0,
       "confirmed_at": 0,
       "tx_index": 0,
       "network": "string"
@@ -776,13 +869,11 @@ This operation does not require authentication
   "bill_address": "string",
   "charge_url": "string",
   "order_identifier": "string",
-  "sub_state_code": 0,
   "paid_base_amount": 0,
   "name": "string",
   "paid_amount": 0,
   "external_order_id": "string",
   "customer_name": "string",
-  "state_code": 0,
   "recipient_name": "string",
   "order_id": 0,
   "cancel_url": "string",
@@ -824,13 +915,11 @@ This operation does not require authentication
 |bill_address|string|false|none|none|
 |charge_url|string|false|none|none|
 |order_identifier|string|false|none|none|
-|sub_state_code|integer(int32)|false|none|none|
 |paid_base_amount|number|false|none|none|
 |name|string|false|none|none|
 |paid_amount|number|false|none|none|
 |external_order_id|string|false|none|none|
 |customer_name|string|false|none|none|
-|state_code|integer(int32)|false|none|none|
 |recipient_name|string|false|none|none|
 |order_id|integer(int64)|false|none|none|
 |cancel_url|string|false|none|none|
@@ -847,17 +936,14 @@ This operation does not require authentication
 ```json
 {
   "base_currency": "string",
-  "amount": 0,
-  "tx_hash": "string",
-  "network": "string",
   "detected_at": 0,
+  "amount": 0,
   "base_amount": 0,
+  "tx_hash": "string",
   "currency": "string",
   "block": {
     "network_id": 0,
-    "tx_count": 0,
     "accumulated_confirmed": 0,
-    "best_height": 0,
     "prev_hash": "string",
     "required_confirmed": 0,
     "best_hash": "string",
@@ -869,9 +955,8 @@ This operation does not require authentication
   },
   "state": "string",
   "tx_index": 0,
-  "state_code": 0,
   "confirmed_at": 0,
-  "from_address": "string"
+  "network": "string"
 }
 
 ```
@@ -881,18 +966,16 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |base_currency|string|false|none|none|
-|amount|number|false|none|none|
-|tx_hash|string|false|none|none|
-|network|string|false|none|none|
 |detected_at|integer(int64)|false|none|none|
+|amount|number|false|none|none|
 |base_amount|number|false|none|none|
+|tx_hash|string|false|none|none|
 |currency|string|false|none|none|
 |block|[ChargeOrderTxBlock](#schemachargeordertxblock)|false|none|none|
 |state|string|false|none|none|
 |tx_index|integer(int32)|false|none|none|
-|state_code|integer(int32)|false|none|none|
 |confirmed_at|integer(int64)|false|none|none|
-|from_address|string|false|none|none|
+|network|string|false|none|none|
 
 <h2 id="tocS_ApiResponseChargeOrderDto">ApiResponseChargeOrderDto</h2>
 <!-- backwards compatibility -->
@@ -908,12 +991,10 @@ This operation does not require authentication
     "charge_pricing": {
       "property1": {
         "amount": 0,
-        "last_update": 0,
         "currency": "string"
       },
       "property2": {
         "amount": 0,
-        "last_update": 0,
         "currency": "string"
       }
     },
@@ -926,17 +1007,14 @@ This operation does not require authentication
     "payments": [
       {
         "base_currency": "string",
-        "amount": 0,
-        "tx_hash": "string",
-        "network": "string",
         "detected_at": 0,
+        "amount": 0,
         "base_amount": 0,
+        "tx_hash": "string",
         "currency": "string",
         "block": {
           "network_id": 0,
-          "tx_count": 0,
           "accumulated_confirmed": 0,
-          "best_height": 0,
           "prev_hash": "string",
           "required_confirmed": 0,
           "best_hash": "string",
@@ -948,9 +1026,8 @@ This operation does not require authentication
         },
         "state": "string",
         "tx_index": 0,
-        "state_code": 0,
         "confirmed_at": 0,
-        "from_address": "string"
+        "network": "string"
       }
     ],
     "created_at": 0,
@@ -967,9 +1044,7 @@ This operation does not require authentication
         "tx_hash": "string",
         "block": {
           "network_id": 0,
-          "tx_count": 0,
           "accumulated_confirmed": 0,
-          "best_height": 0,
           "prev_hash": "string",
           "required_confirmed": 0,
           "best_hash": "string",
@@ -980,7 +1055,6 @@ This operation does not require authentication
           "height": 0
         },
         "state": "string",
-        "state_code": 0,
         "confirmed_at": 0,
         "tx_index": 0,
         "network": "string"
@@ -998,13 +1072,11 @@ This operation does not require authentication
     "bill_address": "string",
     "charge_url": "string",
     "order_identifier": "string",
-    "sub_state_code": 0,
     "paid_base_amount": 0,
     "name": "string",
     "paid_amount": 0,
     "external_order_id": "string",
     "customer_name": "string",
-    "state_code": 0,
     "recipient_name": "string",
     "order_id": 0,
     "cancel_url": "string",
@@ -1042,9 +1114,7 @@ This operation does not require authentication
 ```json
 {
   "network_id": 0,
-  "tx_count": 0,
   "accumulated_confirmed": 0,
-  "best_height": 0,
   "prev_hash": "string",
   "required_confirmed": 0,
   "best_hash": "string",
@@ -1062,9 +1132,7 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |network_id|integer(int64)|false|none|none|
-|tx_count|integer(int32)|false|none|none|
 |accumulated_confirmed|integer(int32)|false|none|none|
-|best_height|integer(int64)|false|none|none|
 |prev_hash|string|false|none|none|
 |required_confirmed|integer(int32)|false|none|none|
 |best_hash|string|false|none|none|
@@ -1084,7 +1152,6 @@ This operation does not require authentication
 ```json
 {
   "amount": 0,
-  "last_update": 0,
   "currency": "string"
 }
 
@@ -1095,7 +1162,6 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |amount|number|false|none|none|
-|last_update|integer(int64)|false|none|none|
 |currency|string|false|none|none|
 
 <h2 id="tocS_ChargePublicUpdateDto">ChargePublicUpdateDto</h2>
@@ -1139,9 +1205,7 @@ This operation does not require authentication
   "tx_hash": "string",
   "block": {
     "network_id": 0,
-    "tx_count": 0,
     "accumulated_confirmed": 0,
-    "best_height": 0,
     "prev_hash": "string",
     "required_confirmed": 0,
     "best_hash": "string",
@@ -1152,7 +1216,6 @@ This operation does not require authentication
     "height": 0
   },
   "state": "string",
-  "state_code": 0,
   "confirmed_at": 0,
   "tx_index": 0,
   "network": "string"
@@ -1172,7 +1235,6 @@ This operation does not require authentication
 |tx_hash|string|false|none|none|
 |block|[ChargeOrderTxBlock](#schemachargeordertxblock)|false|none|none|
 |state|string|false|none|none|
-|state_code|integer(int32)|false|none|none|
 |confirmed_at|integer(int64)|false|none|none|
 |tx_index|integer(int32)|false|none|none|
 |network|string|false|none|none|

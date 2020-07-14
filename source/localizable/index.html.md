@@ -3,7 +3,8 @@ title: I18n.t(:title)
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: cURL
-  - go: go
+  - javascript--node: NodeJS
+  - go: Go
   - python: Python
 
 toc_footers:
@@ -12,10 +13,12 @@ toc_footers:
 
 includes:
   - intro
-  - resources
+  - guides
   - charges
-  - errors
   - webhooks
+  - resources
+  - currencies
+  - errors
 
 search: true
 

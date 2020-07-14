@@ -1,3 +1,5 @@
 ---
 zh:
+  intro: "介绍"
   title: "接口文档"
+  description: "Mimos Commerce提供了一个简单而强大的REST API，可将加密货币付款集成到您的业务或应用程序中。 该API参考文档提供了有关可用服务的可访问点以及如何与它们交互的信息。"
