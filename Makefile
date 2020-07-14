@@ -1,6 +1,7 @@
 run_slate:
 	echo "Run Slate at http://localhost:4567 ..."
-	docker run -d --rm --name slate -p 4567:4567 -v $(CURDIR)/build:/srv/slate/build -v $(CURDIR)/source:/srv/slate/source slate
+	#docker run -d --rm --name slate -p 4567:4567 -v $(CURDIR)/build:/srv/slate/build -v $(CURDIR)/source:/srv/slate/source slate
+	docker run -d --rm --name slate -p 4567:4567 -v $(CURDIR)/build:/srv/slate/build -v $(CURDIR)/source:/srv/slate/source -v $(CURDIR)/lib:/srv/slate/lib slate
 
 stop_slate:
 	echo "Stop Slate..."
@@ -16,3 +17,6 @@ logging_slate:
 
 convert_swagger_to_slate:
 	widdershins --search true --expandBody true --language_tabs 'shell:cURL' 'javascript--node:NodeJS' 'go:Go' 'python:Python' 'java:Java' --summary $(CURDIR)/spec/mimos_pay.json -o $(CURDIR)/spec/mimos_pay.md
+
+build_docker_image:
+	docker build . -t slate

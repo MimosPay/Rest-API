@@ -1,4 +1,4 @@
-# Introduce API Reference
+# Introduce API Reference {#intro}
 
 The Mimos Commerce provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.
 

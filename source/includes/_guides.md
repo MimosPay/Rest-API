@@ -1,11 +1,11 @@
-# Guides
+# Guides {#guides}
 
-## Accept payments via MimosPay
+## Accept payments via MimosPay {#accept-payments-via-mimospay}
 
 To accept payments via MimosPay, a token will need to be sent with the API request.
 And the API request will be requiring cryptographically signing before sent.
 
-### Getting API Key
+### Getting API Key {#getting-api-key}
 
 You can generate a token directly from the `Settings -> API Keys` page.
 
@@ -23,7 +23,7 @@ You can generate a token directly from the `Settings -> API Keys` page.
   - `API Key (APP_ID)` It is used in API request
   - `API Secrect` It is used to generate the signature (and only visible once after creation)
 
-### Signing request<a name="signing_request"></a>
+### Signing request {#signing-request}
 
 > Request Body Example
 
@@ -162,11 +162,11 @@ Pay attention to below rules:
 3. Append the API Secrect to `stringA` with param name `key` as `stringB`
 4. Use MD5 encode `stringB` and convert all characters to uppercasee to get the `signatureVal`.
 
-### Making request
+### Making request {#making-request}
 
-For more details, please refer to [Create a charge](/#create-a-charge)
+For more details, please refer to [Create a charge](#create-a-charge)
 
-### Receiving events
+### Receiving events {#receiving-events}
 
 > Webhook Example - Headers
 
@@ -258,6 +258,6 @@ The signature content,
 
 And signing the content by follow the [rules](#webhooks)
 
-For more details, please refer to [Resource - Event](#event).
+For more details, please refer to [Resource - Event](#schema-event).
 
 [mimos-pay-settings]: https://w.mimos.io/commerce/en/settings

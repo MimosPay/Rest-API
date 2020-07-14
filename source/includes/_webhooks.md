@@ -1,4 +1,4 @@
-# Webhooks
+# Webhooks {#webhooks}
 
 Webhooks make it easier to integrate with MimosPay by allowing you to subscribe to a set of charge events. You can subscribe to the events by going to your settings page and adding a new webhook subscription under your API Key.
 

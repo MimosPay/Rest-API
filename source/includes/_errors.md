@@ -1,4 +1,4 @@
-# Errors
+# Errors {#errors}
 
 The MimosPay API uses the following error codes:
 

@@ -1,6 +1,6 @@
-# Currencies
+# Currencies  {#currencies}
 
-## Fiat Currencies
+## Fiat Currencies {#fiat-currencies}
 
 ISO 4217 3-character currency code. This is the currency associated with the price field, supported currencies are available via the Currencies resource
 
@@ -182,7 +182,7 @@ The full list of currencies defined in [ISO 4217][iso_4217] presently available 
 | ZMW | Zambian Kwacha |
 | ZWL | Zimbabwean Dollar |
 
-## Crypto Currencies
+## Crypto Currencies {#crypto-currencies}
 
 | Code | Currency | Payment Method/Network |
 | --- | --- | --- |

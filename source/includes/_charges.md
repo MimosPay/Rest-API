@@ -1,6 +1,6 @@
-# Charges
+# Charges {#charges}
 
-## Create a charge<a name="request_create_charge_order"></a>
+## Create a charge {#create-a-charge}
 
 To get paid in cryptocurrency, you need to create a charge object.
 
@@ -109,11 +109,11 @@ print(r.json())
 
 ```
 
-### HTTP Request
+### HTTP Request {#create-a-charge-request}
 
 `POST /v1/charges`
 
-#### Request Parameters {#custom-id}
+#### Request Parameters {#create-a-charge-request-params}
 
 > Body parameter
 
@@ -127,7 +127,7 @@ print(r.json())
 }
 ```
 
-#### Request Headers
+#### Request Headers {#create-a-charge-request-headers}
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -136,7 +136,7 @@ print(r.json())
 |X-MM-NONCE|string|true|An unique string|
 |X-MM-SIGNATURE|string|true|The request content signature|
 
-#### Request Body
+#### Request Body {#create-a-charge-request-body}
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -146,7 +146,7 @@ print(r.json())
 |currency|string|true|Local fiat currency, see [Supported Fiat Currencies](#fiat-currencies)|
 |metadata|string|false|The stringify of JSON value by merchant defined.<br/>MimosPay supported fields:<ul><li>image_url: the image will display on the customer page if the URL start with `http(s)` and end with <code>jpg&#124;gif&#124;png&#124;jpeg&#124;svg</code></ul></li>|
 
-### HTTP Responses
+### HTTP Responses {#create-a-charge-response}
 
 > Response Examples,
 
@@ -203,12 +203,12 @@ print(r.json())
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Created|[ApiResponse](#apiresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[ApiResponse](#apiresponse)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|[ApiResponse](#apiresponse)|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error|[ApiResponse](#apiresponse)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Created|[ApiResponse](#schema-apiresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[ApiResponse](#schema-apiresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|[ApiResponse](#schema-apiresponse)|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error|[ApiResponse](#schema-apiresponse)|
 
-## Update a charge
+## Update a charge {#update-a-charge}
 
 Once a charge is created and the charge order has required information then the customer must choose the payment method and fill the email address to continue order.
 
@@ -298,15 +298,15 @@ print(r.json())
 
 ```
 
-### HTTP Request
+### HTTP Request {#update-a-charge-request}
 
 `PUT /v1/charges/{order_identifier}`
 
-#### Request Path
+#### Request Path {#update-a-charge-request-path}
 
 `order_identifier`: The charge order identifier
 
-#### Request Parameters
+#### Request Parameters {#update-a-charge-request-params}
 
 > Body parameter
 
@@ -317,7 +317,7 @@ print(r.json())
 }
 ```
 
-#### Request Body
+#### Request Body {#update-a-charge-request-body}
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -325,7 +325,7 @@ print(r.json())
 |bill_address|string|false|Customer email address to receive payment or refund notifications|
 |customer_name|string|false|none|
 
-### HTTP Responses
+### HTTP Responses {#update-a-charge-response}
 
 > Response Examples,
 
@@ -374,11 +374,11 @@ print(r.json())
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[ApiResponse](#apiresponse)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|[ApiResponse](#schemaapiresponse)|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error|[ApiResponse](#schemaapiresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[ApiResponse](#schema-apiresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|[ApiResponse](#schema-apiresponse)|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error|[ApiResponse](#schema-apiresponse)|
 
-## Show a charge
+## Show a charge {#show-a-charge}
 
 <aside class="success">
 This operation does not require authentication
@@ -452,15 +452,15 @@ print(r.json())
 
 ```
 
-### HTTP Request
+### HTTP Request {#show-a-charge-request}
 
 `GET /v1/charges/{order_identifier}`
 
-#### Request Path
+#### Request Path {#show-a-charge-request-path}
 
 `order_identifier`: The charge order identifier
 
-#### Request Parameters
+#### Request Parameters {#show-a-charge-request-params}
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -562,14 +562,14 @@ print(r.json())
 }
 ```
 
-### HTTP Responses
+### HTTP Responses {#show-a-charge-response}
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[ApiResponse](#apiresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[ApiResponse](#apiresponse)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|[ApiResponse](#schemaapiresponse)|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error|[ApiResponse](#schemaapiresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[ApiResponse](#schema-apiresponse)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[ApiResponse](#schema-apiresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|[ApiResponse](#schema-apiresponse)|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error|[ApiResponse](#schema-apiresponse)|
 
 [mimos-pay-settings]: https://w.mimos.io/commerce/en/settings
 [supported_fiat_currencies]: #fiat-currencies

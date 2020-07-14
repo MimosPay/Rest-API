@@ -1,4 +1,4 @@
-# Resources
+# Resources {#schema-resources}
 
 <aside class="notice">
 <code>Number</code> will represent as string in MimosPay.<br/><br/>
@@ -9,7 +9,7 @@ Since some libraries and languages don't deserialize the JSON,
 </ul>
 </aside>
 
-## ApiResponse
+## ApiResponse {#schema-apiresponse}
 
 > Example,
 
@@ -49,10 +49,10 @@ Since some libraries and languages don't deserialize the JSON,
 |status|number|HTTP status code|
 |code|number|<ul><li>0 - success</li><li>Not zero number - error codes</li></ul>|
 |message|string|success or error message|
-|data|object|the object defined in [resources](#resources) when response `2xx`|
+|data|object|the object defined in [resources](#schema-resources) when response `2xx`|
 |error|object|the error object when response `4xx` or `5xx`|
 
-## Charge<a name="schema_charge_order"></a>
+## Charge {#schema-charge-order}
 
 > Example,
 
@@ -151,7 +151,7 @@ Since some libraries and languages don't deserialize the JSON,
 |payment_method|string|Crypto payment methods, see [Supported Crypto Currencies](#crypto-currencies)|
 |bill_address|string|The email address from customer|
 |customer_name|string|The name from customer|
-|currency|string|Three-letter ISO currency code, in uppercase. Must be a [supported currency](#fiat_currencies)|
+|currency|string|Three-letter ISO currency code, in uppercase. Must be a [supported currency](#fiat-currencies)|
 |created_at|number|The UTC timestamp in millisecond of charge order creation time|
 |expired_at|number|The UTC timestamp in millisecond of charge order expiration time|
 |state|string|The charge state:<ul><li>PRE_ORDER</li><li>NEW</li><li>PENDING</li><li>CONFIRMING</li><li>COMPLETE</li><li>CANCEL</li></ul>|
@@ -165,15 +165,15 @@ Since some libraries and languages don't deserialize the JSON,
 |type|string|The type of charge,<ul><li>FIXED_VALUE</li><li>ANY_VALUE</li></ul>|
 |recipient_name|string|The name of recipient|
 |unresolved_id|number|The unresolved id associated with the charge, if there exist the unresolved payment in, <ul><li>EXPIRED</li><li>UNDERPAID</li><li></li><li>OVERPAID</li></ul>|
-|required_info|[Charge Rquried](#schema_charge_order_required)|The charge requirement information|
+|required_info|[Charge Rquried](#schema-charge-order-required-information)|The charge requirement information|
 |addresses|map\<string, string\>|Set of addresses associated with the charge, the key is payment method|
 |» **additionalProperties**|string|The associated crypto address|
 |charge_pricing|map\<string, object\>|Set of price information associated with the charge, the key is payment method|
-|» **additionalProperties**|[Charge Prices](#schema_charge_order_price)|The associated price in the specific payment method|
-|payments|[Charge Payment\[\]](#schema_charge_order_payment)|Array of charge payment objects|
-|refunds|[Charge Refund\[\]](#schema_charge_order_refund)|Array of charge refund objects|
+|» **additionalProperties**|[Charge Prices](#schema-charge-order-price)|The associated price in the specific payment method|
+|payments|[Charge Payment\[\]](#schema-charge-order-payment)|Array of charge payment objects|
+|refunds|[Charge Refund\[\]](#schema-charge-order-refund)|Array of charge refund objects|
 
-### Charge Price<a name="schema_charge_order_price"></a>
+### Charge Price {#schema-charge-order-price}
 
 > Example,
 
@@ -190,7 +190,7 @@ Since some libraries and languages don't deserialize the JSON,
 |amount|number|Price in crypto currency|
 |currency|string|The crypto currency code, in uppercase. Must be a [supported currency](#crypto-currencies)|
 
-### Charge Payments<a name="schema_charge_order_payment"></a>
+### Charge Payments {#schema-charge-order-payment}
 
 > Example,
 
@@ -232,9 +232,9 @@ Since some libraries and languages don't deserialize the JSON,
 |state|string|The payment state:<ul><li>PENDING</li><li>FORKED</li><li>COMPLETE</li></ul>|
 |detected_at|number|The UTC timestamp in millisecond of payment detection time|
 |confirmed_at|number|The UTC timestamp in millisecond of payment confirmation time|
-|block|[Block Tx](#schema_charge_order_tx_block)|none|
+|block|[Block Tx](#schema-block-tx)|none|
 
-### Charge Refund<a name="schema_charge_order_refund"></a>
+### Charge Refund {#schema-charge-order-refund}
 
 > Exmaple,
 
@@ -274,9 +274,9 @@ Since some libraries and languages don't deserialize the JSON,
 |detected_at|number|The UTC timestamp in millisecond of payment detection time|
 |confirmed_at|number|The UTC timestamp in millisecond of payment confirmation time|
 |fee|number|none|
-|block|[Block Tx](#schema_charge_order_tx_block)|none|
+|block|[Block Tx](#schema-block-tx)|none|
 
-### Charge Required Infomations<a name="schema_charge_order_required"></a>
+### Charge Required Informations {#schema-charge-order-required-information}
 
 > Example,
 
@@ -294,7 +294,7 @@ Since some libraries and languages don't deserialize the JSON,
 |bill_address|string|Customer email address to receive payment or refund notifications|
 |customer_name|string|Customer name for email content|
 
-## Block Tx Information<a name="schema_charge_order_tx_block"></a>
+## Block Tx Information {#schema-block-tx}
 
 > Example,
 
@@ -320,7 +320,7 @@ Since some libraries and languages don't deserialize the JSON,
 |accumulated_confirmed|number|The number of accumulated blockchain confirmations, it will stop giving updates on associated order is terminated|
 |forked|boolean|The blockchain has a soft fork occurs or not on this block height|
 
-## Event
+## Event {#schema-event}
 
 > Example,
 
@@ -341,7 +341,7 @@ Since some libraries and languages don't deserialize the JSON,
 |id|string|Delivery event id|
 |type|string|Delivery event type,<br/><ul><li>charge:new</li><li>charge:pending</li><li>charge:confirming</li><li>charge:complete</li><li>charge:cancel</li></ul>|
 |create_at|string|The UTC timestamp, e.g., 2020-07-01T01:23:04.632Z|
-|data|object|Event payload,<br/><ul><li>[charge](#charge)</li></ul>The resouce of the associated object (e.g. `charge`)|
+|data|object|Event payload,<br/><ul><li>[charge](#schema-charge-order)</li></ul>The resouce of the associated object (e.g. `charge`)|
 
 The events types,
 

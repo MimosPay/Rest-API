@@ -27,4 +27,4 @@ RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-CMD ["bundle", "exec", "middleman", "server", "--watcher-force-polling"]
+CMD ["bundle", "exec", "middleman", "server", "--watcher-force-polling", "--verbose"]
