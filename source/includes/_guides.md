@@ -1,29 +1,40 @@
-# Guides {#guides}
+# I18n.t('guide.title') {#guides}
 
-## Accept payments via MimosPay {#accept-payments-via-mimospay}
+## I18n.t('guide.accept_payments') {#accept-payments-via-mimospay}
 
-To accept payments via MimosPay, a token will need to be sent with the API request.
-And the API request will be requiring cryptographically signing before sent.
+I18n.t('guide.note')
 
-### Getting API Key {#getting-api-key}
+### I18n.t('guide.get_api_key') {#getting-api-key}
 
-You can generate a token directly from the `Settings -> API Keys` page.
+I18n.t('guide.get_api_key_note')
 
-  1. Click `Add API Key`
-  2. Fill the form parameters
-    * Label, (e.g. My MimosPay Client)
-    * Success Redirect URL
-    * Failure Redirect URL
-    * Webhook URL, to receive the events which push by MimosPay
-  3. Click Button `Generate API KEY`
-  4. Save your API Key and API Secret either click the `Copy API KEY` or copy them manually
+  1. I18n.t('guide.get_api_key_step1')
+  2. I18n.t('guide.get_api_key_step2')
+    * I18n.t('guide.get_api_key_step2_label')
+    * I18n.t('guide.get_api_key_step2_succ_url')
+    * I18n.t('guide.get_api_key_step2_fail_url')
+    * I18n.t('guide.get_api_key_step2_cb_url')
+  3. I18n.t('guide.get_api_key_step3')
+  4. I18n.t('guide.get_api_key_step4')
 
-  **Note**:
+  **I18n.t(:notic)**:
 
-  - `API Key (APP_ID)` It is used in API request
-  - `API Secrect` It is used to generate the signature (and only visible once after creation)
+  - `API Key (APP_ID)` I18n.t('guide.api_key_note')
+  - `API Secrect` I18n.t('guide.api_secrect_note')
 
-### Signing request {#signing-request}
+### I18n.t('guide.signing_request') {#signing-request}
+
+> Request Headers Example
+
+```json
+[
+  ...
+  "X-MM-APP-ID": "6e1dd7ce21874898b0b77b3288f006fa",
+  "X-MM-TIMESTAMP": 1594127461389,
+  "X-MM-NONCE": "2hjkr7iveci"
+  ...
+]
+```
 
 > Request Body Example
 
@@ -146,27 +157,27 @@ print(r.json())
 
 ```
 
-1. Prepare the request headers and body
-  * `X-MM-APP-ID`, [your API Key][mimos-pay-settings]
-  * `X-MM-TIMESTAMP`, the UTC timestamp when API request, the unit is millisecond. The client timestamp included with the request must be within 5 minutes of the MimosPay system time when the request is received. If not, the request will fail with the `Invalid X-MM-TIMESTAMP` error.
-  * `X-MM-NONCE`, an unique string to enforce idempotence for POST requests
-  * request payload
+1. I18n.t('guide.signing_request_step1')
+  * `X-MM-APP-ID`, [I18n.t(:your_api_key)][mimos-pay-settings]
+  * `X-MM-TIMESTAMP`, I18n.t('guide.signing_request_step1_ts')
+  * `X-MM-NONCE`, I18n.t('guide.signing_request_step1_nonce')
+  * I18n.t('guide.signing_request_step1_payload')
 
-2. Sort the params by the non-empty key's ASCII in the ascending order and concatenate into `stringA` with URL key-value format(i.e. key1=value1&key2=value2…).<br /><br />
-Pay attention to below rules:
-  * Sort the params name in the ASCII ascending order
-  * The param with empty value is ignored
-  * The param name are case sensitive
-  * If the value is object, stringify the object to a JSON string.
+2. I18n.t('guide.signing_request_step2')<br />
+I18n.t('guide.signing_request_step2_note')
+  * I18n.t('guide.signing_request_step2_rule1')
+  * I18n.t('guide.signing_request_step2_rule2')
+  * I18n.t('guide.signing_request_step2_rule3')
+  * I18n.t('guide.signing_request_step2_rule4')
 
-3. Append the API Secrect to `stringA` with param name `key` as `stringB`
-4. Use MD5 encode `stringB` and convert all characters to uppercasee to get the `signatureVal`.
+3. I18n.t('guide.signing_request_step3')
+4. I18n.t('guide.signing_request_step4')
 
-### Making request {#making-request}
+### I18n.t('guide.making_request') {#making-request}
 
-For more details, please refer to [Create a charge](#create-a-charge)
+I18n.t('guide.making_request_note')[I18n.t('charge.create_a_charge')](#create-a-charge)
 
-### Receiving events {#receiving-events}
+### I18n.t('guide.receiving_events') {#receiving-events}
 
 > Webhook Example - Headers
 
@@ -240,24 +251,24 @@ For more details, please refer to [Create a charge](#create-a-charge)
 }
 ```
 
-You can receive the event if adding a webhook subscription in [setting][mimos-pay-settings].
+I18n.t('guide.receiving_events_note')
 
-Every MimosPay webhook request includes headers,
+I18n.t('guide.receiving_events_webhook_note')
 
-  * `X-MM-APP-ID`, [your API Key][mimos-pay-settings]
-  * `X-MM-NONCE`, an unique string to enforce idempotence for POST requests
-  * `X-MM-SIGNATURE`, MD5 signature of the request body `data` field, computed using your webhook shared secret of the API Key.
+  * `X-MM-APP-ID`, [I18n.t(:your_api_key)][mimos-pay-settings]
+  * `X-MM-NONCE`, I18n.t('guide.signing_request_step1_nonce')
+  * `X-MM-SIGNATURE`, I18n.t('guide.receiving_events_webhook_signature')
 
-Always make sure that you verify the webhook signature before acting on it inside your system.
+I18n.t('guide.receiving_events_webhook_note2')
 
-The signature content,
+I18n.t('guide.receiving_events_webhook_signature_content')
 
   * `X-MM-APP-ID`
   * `X-MM-NONCE`
-  * `event.data` in request payload
+  * `event.data` I18n.t('guide.receiving_events_webhook_in_payload')
 
-And signing the content by follow the [rules](#webhooks)
+I18n.t('guide.receiving_events_webhook_rule')[I18n.t(:rules)](#webhooks)
 
-For more details, please refer to [Resource - Event](#schema-event).
+I18n.t('guide.making_request_note')[Resource - Event](#schema-event).
 
 [mimos-pay-settings]: https://w.mimos.io/commerce/en/settings

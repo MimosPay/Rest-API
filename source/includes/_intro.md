@@ -1,8 +1,8 @@
-# Introduce API Reference {#intro}
+# I18n.t(:intro) {#intro}
 
-The Mimos Commerce provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.
+I18n.t(:description)
 
 - [Terms of service](https://w.mimos.io/commerce/legal/terms-of-service)
 - [License - Commercial Use License](https://mimos.io/)
 
-Base URL: `https://api.mimos.io/crypto-checkout/`
+I18n.t(:base_url): `https://api.mimos.io/crypto-checkout/`

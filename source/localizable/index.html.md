@@ -8,7 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - python: Python
 
 toc_footers:
-  - <a href='https://w.dev.mimos.io/commerce'>Sign Up to get sandbox API credentials</a>
+  - <a href='https://w.mimos.io/commerce'>Sign Up to get API credentials</a>
   - <a href='https://github.com/MimosPay/Rest-API'>Documentation Powered by Slate</a>
 
 includes:
@@ -24,4 +24,3 @@ search: true
 
 code_clipboard: true
 ---
-

@@ -22,15 +22,10 @@ under the License.
     end
   end
 %>
-<!--
-  t_reg = /t\(([^\)]+)\)/
-  ==> 
-  t(:title)
--->
 <%
   t_reg = /I18n\.t\(([^\)]+)\)/
   current_page.data.title = current_page.data.title.gsub(t_reg){|t| eval(t)}
-  page_content = page_content.gsub(t_reg){|t| eval(t)}
+  page_content = page_content.gsub(t_reg){|t| puts t;eval(t.gsub('&#39;', '\''));}
 %>
 
 <!doctype html>
@@ -115,6 +110,19 @@ under the License.
           <% end %>
         </ul>
       <% end %>
+      <!-- change language -->
+      <ul class="toc-footer">
+        <% if false %>
+        <li><%= current_page.url %></li>
+        <li><%= I18n.locale %></li>
+        <li><%= I18n.available_locales %></li>
+        <% end %>
+        <% if (I18n.locale == :zh) %>
+        <li><a href="/" class="lang-link"><%= t(:swith_lang)%> English</a></li>
+        <% else %>
+        <li><a href="/zh" class="lang-link"><%= t(:swith_lang)%> 中文</a></li>
+        <% end %>
+      </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
