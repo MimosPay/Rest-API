@@ -117,11 +117,13 @@ under the License.
         <li><%= current_page.normalized_path %></li>
         <li><%= I18n.locale %></li>
         <li><%= I18n.available_locales %></li>
+        <li><%= link_to t(:swith_lang) + ' English', current_page.url.gsub("/zh/", "/") %></li>
+        <li><%= link_to t(:swith_lang) + ' 中文', current_page.url.concat("zh") %></li>
         <% end %>
         <% if (I18n.locale == :zh) %>
-        <li><%= link_to t(:swith_lang) + ' English', current_page.url.gsub("/zh/", "/") %></li>
+        <li><%= link_to t(:swith_lang) + ' English', '../' %></li>
         <% else %>
-        <li><%= link_to t(:swith_lang) + ' 中文', current_page.url.concat("zh") %></li>
+        <li><%= link_to t(:swith_lang) + ' 中文', 'zh' %></li>
         <% end %>
       </ul>
     </div>
