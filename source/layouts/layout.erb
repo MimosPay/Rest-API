@@ -118,9 +118,9 @@ under the License.
         <li><%= I18n.available_locales %></li>
         <% end %>
         <% if (I18n.locale == :zh) %>
-        <li><a href="/" class="lang-link"><%= t(:swith_lang)%> English</a></li>
+        <li><a href="<%= current_page.url.gsub("/zh/", "/") %>" class="lang-link"><%= t(:swith_lang)%> English</a></li>
         <% else %>
-        <li><a href="/zh" class="lang-link"><%= t(:swith_lang)%> 中文</a></li>
+        <li><a href="<%= current_page.url.concat("zh") %>" class="lang-link"><%= t(:swith_lang)%> 中文</a></li>
         <% end %>
       </ul>
     </div>

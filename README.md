@@ -21,5 +21,7 @@ Check it out at https://mimospay.github.io/Rest-API
 ## [Updating Slate](https://github.com/slatedocs/slate/wiki/Updating-Slate)
 
 > git remote add upstream https://github.com/slatedocs/slate.git
+
 > git fetch upstream
+
 > git merge upstream/main
