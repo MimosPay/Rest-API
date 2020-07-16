@@ -114,13 +114,14 @@ under the License.
       <ul class="toc-footer">
         <% if false %>
         <li><%= current_page.url %></li>
+        <li><%= current_page.normalized_path %></li>
         <li><%= I18n.locale %></li>
         <li><%= I18n.available_locales %></li>
         <% end %>
         <% if (I18n.locale == :zh) %>
-        <li><a href="<%= current_page.url.gsub("/zh/", "/") %>" class="lang-link"><%= t(:swith_lang)%> English</a></li>
+        <li><%= link_to t(:swith_lang) + ' English', current_page.url.gsub("/zh/", "/") %></li>
         <% else %>
-        <li><a href="<%= current_page.url.concat("zh") %>" class="lang-link"><%= t(:swith_lang)%> 中文</a></li>
+        <li><%= link_to t(:swith_lang) + ' 中文', current_page.url.concat("zh") %></li>
         <% end %>
       </ul>
     </div>
