@@ -1,8 +1,3 @@
-<!--
-  t_reg = /t\(([^\)]+)\)/
-  ==> 
-  t(:title)
--->
 
 <!doctype html>
 <html>
@@ -315,7 +310,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#intro" class="toc-h1 toc-link" data-title="Introduce API Reference">Introduce API Reference</a>
+            <a href="#intro" class="toc-h1 toc-link" data-title="Introduce">Introduce</a>
           </li>
           <li>
             <a href="#guides" class="toc-h1 toc-link" data-title="Guides">Guides</a>
@@ -375,14 +370,18 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://w.dev.mimos.io/commerce'>Sign Up to get sandbox API credentials</a></li>
+            <li><a href='https://w.mimos.io/commerce'>Sign Up to get API credentials</a></li>
             <li><a href='https://github.com/MimosPay/Rest-API'>Documentation Powered by Slate</a></li>
         </ul>
+      <!-- change language -->
+      <ul class="toc-footer">
+        <li><a href="/zh" class="lang-link">切换至 中文</a></li>
+      </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='intro'>Introduce API Reference</h1>
+        <h1 id='intro'>Introduce</h1>
 <p>The Mimos Commerce provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.</p>
 
 <ul>
@@ -392,10 +391,9 @@
 
 <p>Base URL: <code>https://api.mimos.io/crypto-checkout/</code></p>
 <h1 id='guides'>Guides</h1><h2 id='accept-payments-via-mimospay'>Accept payments via MimosPay</h2>
-<p>To accept payments via MimosPay, a token will need to be sent with the API request.
-And the API request will be requiring cryptographically signing before sent.</p>
+<p>To accept payments via MimosPay, a token will need to be sent with the API request. And the API request will be requiring cryptographically signing before sent.</p>
 <h3 id='getting-api-key'>Getting API Key</h3>
-<p>You can generate a token directly from the <code>Settings -&gt; API Keys</code> page.</p>
+<p>You can generate a token directly from the <code>Settings -> API Keys</code> page.</p>
 
 <ol>
 <li>Click <code>Add API Key</code></li>
@@ -418,6 +416,17 @@ And the API request will be requiring cryptographically signing before sent.</p>
 <li><code>API Secrect</code> It is used to generate the signature (and only visible once after creation)</li>
 </ul>
 <h3 id='signing-request'>Signing request</h3>
+<blockquote>
+<p>Request Headers Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+  </span><span class="s2">"X-MM-APP-ID"</span><span class="err">:</span><span class="w"> </span><span class="s2">"6e1dd7ce21874898b0b77b3288f006fa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"X-MM-TIMESTAMP"</span><span class="err">:</span><span class="w"> </span><span class="mi">1594127461389</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"X-MM-NONCE"</span><span class="err">:</span><span class="w"> </span><span class="s2">"2hjkr7iveci"</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>Request Body Example</p>
 </blockquote>
@@ -530,11 +539,11 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 
 <ul>
 <li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">your API Key</a></li>
-<li><code>X-MM-TIMESTAMP</code>, the UTC timestamp when API request, the unit is millisecond. The client timestamp included with the request must be within 5 minutes of the MimosPay system time when the request is received. If not, the request will fail with the <code>Invalid X-MM-TIMESTAMP</code> error.</li>
-<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests</li>
+<li><code>X-MM-TIMESTAMP</code>, the UTC timestamp when API request, the unit is millisecond. The client timestamp included with the request must be within 5 minutes of the MimosPay system time when the request is received. If not, the request will fail with the <code>Invalid X-MM-TIMESTAMP</code> error</li>
+<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests.</li>
 <li>request payload</li>
 </ul></li>
-<li><p>Sort the params by the non-empty key&#39;s ASCII in the ascending order and concatenate into <code>stringA</code> with URL key-value format(i.e. key1=value1&amp;key2=value2…).<br /><br />
+<li><p>Sort the params by the non-empty key's ASCII in the ascending order and concatenate into <code>stringA</code> with URL key-value format(i.e. key1=value1&key2=value2…)<br />
 Pay attention to below rules:</p>
 
 <ul>
@@ -544,7 +553,7 @@ Pay attention to below rules:</p>
 <li>If the value is object, stringify the object to a JSON string.</li>
 </ul></li>
 <li><p>Append the API Secrect to <code>stringA</code> with param name <code>key</code> as <code>stringB</code></p></li>
-<li><p>Use MD5 encode <code>stringB</code> and convert all characters to uppercasee to get the <code>signatureVal</code>.</p></li>
+<li><p>Use MD5 encode <code>stringB</code> and convert all characters to uppercasee to get the <code>signatureVal</code></p></li>
 </ol>
 <h3 id='making-request'>Making request</h3>
 <p>For more details, please refer to <a href="#create-a-charge">Create a charge</a></p>
@@ -619,14 +628,14 @@ Pay attention to below rules:</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>You can receive the event if adding a webhook subscription in <a href="https://w.mimos.io/commerce/en/settings">setting</a>.</p>
+<p>You can receive the event if adding a webhook subscription in <a href='https://w.mimos.io/commerce/en/settings'>Settings</a>.</p>
 
 <p>Every MimosPay webhook request includes headers,</p>
 
 <ul>
 <li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">your API Key</a></li>
-<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests</li>
-<li><code>X-MM-SIGNATURE</code>, MD5 signature of the request body <code>data</code> field, computed using your webhook shared secret of the API Key.</li>
+<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests.</li>
+<li><code>X-MM-SIGNATURE</code>, MD5 signature of the request body <code>data</code> field, computed using your webhook shared secret of the API Key</li>
 </ul>
 
 <p>Always make sure that you verify the webhook signature before acting on it inside your system.</p>
@@ -639,7 +648,7 @@ Pay attention to below rules:</p>
 <li><code>event.data</code> in request payload</li>
 </ul>
 
-<p>And signing the content by follow the <a href="#webhooks">rules</a></p>
+<p>And signing the content by follow the<a href="#webhooks">Rules</a></p>
 
 <p>For more details, please refer to <a href="#schema-event">Resource - Event</a>.</p>
 <h1 id='charges'>Charges</h1><h2 id='create-a-charge'>Create a charge</h2>

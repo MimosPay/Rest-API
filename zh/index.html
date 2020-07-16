@@ -1,8 +1,3 @@
-<!--
-  t_reg = /t\(([^\)]+)\)/
-  ==> 
-  t(:title)
--->
 
 <!doctype html>
 <html>
@@ -315,13 +310,13 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#intro" class="toc-h1 toc-link" data-title="Introduce API Reference">Introduce API Reference</a>
+            <a href="#intro" class="toc-h1 toc-link" data-title="介绍">介绍</a>
           </li>
           <li>
-            <a href="#guides" class="toc-h1 toc-link" data-title="Guides">Guides</a>
+            <a href="#guides" class="toc-h1 toc-link" data-title="接入指南">接入指南</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#accept-payments-via-mimospay" class="toc-h2 toc-link" data-title="Accept payments via MimosPay">Accept payments via MimosPay</a>
+                    <a href="#accept-payments-via-mimospay" class="toc-h2 toc-link" data-title="MimosPay作为支付方式">MimosPay作为支付方式</a>
                   </li>
               </ul>
           </li>
@@ -375,49 +370,63 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://w.dev.mimos.io/commerce'>Sign Up to get sandbox API credentials</a></li>
+            <li><a href='https://w.mimos.io/commerce'>Sign Up to get API credentials</a></li>
             <li><a href='https://github.com/MimosPay/Rest-API'>Documentation Powered by Slate</a></li>
         </ul>
+      <!-- change language -->
+      <ul class="toc-footer">
+        <li><a href="/" class="lang-link">Switch to English</a></li>
+      </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='intro'>Introduce API Reference</h1>
-<p>The Mimos Commerce provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.</p>
+        <h1 id='intro'>介绍</h1>
+<p>Mimos Commerce提供了一个简单而强大的REST API，可将加密货币付款集成到您的业务或应用程序中。 该API参考文档提供了有关可用服务的可访问点以及如何与它们交互的信息。</p>
 
 <ul>
 <li><a href="https://w.mimos.io/commerce/legal/terms-of-service">Terms of service</a></li>
 <li><a href="https://mimos.io/">License - Commercial Use License</a></li>
 </ul>
 
-<p>Base URL: <code>https://api.mimos.io/crypto-checkout/</code></p>
-<h1 id='guides'>Guides</h1><h2 id='accept-payments-via-mimospay'>Accept payments via MimosPay</h2>
-<p>To accept payments via MimosPay, a token will need to be sent with the API request.
-And the API request will be requiring cryptographically signing before sent.</p>
-<h3 id='getting-api-key'>Getting API Key</h3>
-<p>You can generate a token directly from the <code>Settings -&gt; API Keys</code> page.</p>
+<p>API入口: <code>https://api.mimos.io/crypto-checkout/</code></p>
+<h1 id='guides'>接入指南</h1><h2 id='accept-payments-via-mimospay'>MimosPay作为支付方式</h2>
+<p>通过MimosPay接受付款，需要在API请求带上Token。并且在请求发送之前需要进行密码签名。</p>
+<h3 id='getting-api-key'>获取API Key</h3>
+<p>在<code>设置 -> API Keys</code>页面中创建生成API Key。</p>
 
 <ol>
-<li>Click <code>Add API Key</code></li>
-<li>Fill the form parameters
+<li>点击<code>添加API Key</code></li>
+<li>填写表单内容
 
 <ul>
-<li>Label, (e.g. My MimosPay Client)</li>
-<li>Success Redirect URL</li>
-<li>Failure Redirect URL</li>
-<li>Webhook URL, to receive the events which push by MimosPay</li>
+<li>标签, 比如： e电商平台</li>
+<li>支付成功跳转地址</li>
+<li>支付失败跳转地址</li>
+<li>Webhook地址，用于接收MimosPay推送事件的</li>
 </ul></li>
-<li>Click Button <code>Generate API KEY</code></li>
-<li>Save your API Key and API Secret either click the <code>Copy API KEY</code> or copy them manually</li>
+<li>继续点击按钮<code>生成API KEY</code></li>
+<li>点击<code>复制API KEY</code>或者手动复制以保存创建生成的新API Key和API Secret</li>
 </ol>
 
-<p><strong>Note</strong>:</p>
+<p><strong>提示</strong>:</p>
 
 <ul>
-<li><code>API Key (APP_ID)</code> It is used in API request</li>
-<li><code>API Secrect</code> It is used to generate the signature (and only visible once after creation)</li>
+<li><code>API Key (APP_ID)</code> 用于API请求</li>
+<li><code>API Secrect</code> 用于对API请求进行签名，创建后仅可见一次</li>
 </ul>
-<h3 id='signing-request'>Signing request</h3>
+<h3 id='signing-request'>对请求签名</h3>
+<blockquote>
+<p>Request Headers Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+  </span><span class="s2">"X-MM-APP-ID"</span><span class="err">:</span><span class="w"> </span><span class="s2">"6e1dd7ce21874898b0b77b3288f006fa"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"X-MM-TIMESTAMP"</span><span class="err">:</span><span class="w"> </span><span class="mi">1594127461389</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"X-MM-NONCE"</span><span class="err">:</span><span class="w"> </span><span class="s2">"2hjkr7iveci"</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>Request Body Example</p>
 </blockquote>
@@ -526,29 +535,29 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 
 </code></pre></div>
 <ol>
-<li><p>Prepare the request headers and body</p>
+<li><p>准备请求头和请求内容</p>
 
 <ul>
-<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">your API Key</a></li>
-<li><code>X-MM-TIMESTAMP</code>, the UTC timestamp when API request, the unit is millisecond. The client timestamp included with the request must be within 5 minutes of the MimosPay system time when the request is received. If not, the request will fail with the <code>Invalid X-MM-TIMESTAMP</code> error.</li>
-<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests</li>
-<li>request payload</li>
+<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">你的API Key</a></li>
+<li><code>X-MM-TIMESTAMP</code>, API请求带上UTC时间戳，以毫秒为单位。客户端时间戳和系统时间戳最多允许5分钟的时间差，超过此范围将会返回<code>Invalid X-MM-TIMESTAMP</code>异常</li>
+<li><code>X-MM-NONCE</code>, 唯一的随机字符串用于防止重复请求</li>
+<li>请求主体内容</li>
 </ul></li>
-<li><p>Sort the params by the non-empty key&#39;s ASCII in the ascending order and concatenate into <code>stringA</code> with URL key-value format(i.e. key1=value1&amp;key2=value2…).<br /><br />
-Pay attention to below rules:</p>
+<li><p>将请求头和请求内容以key-value格式按照ASCII码升序排序（value不为空）并以URL键值对(比如：key1=value1&key2=value2…)拼接成字符串<code>stringA</code><br />
+请留意以下规则：</p>
 
 <ul>
-<li>Sort the params name in the ASCII ascending order</li>
-<li>The param with empty value is ignored</li>
-<li>The param name are case sensitive</li>
-<li>If the value is object, stringify the object to a JSON string.</li>
+<li>参数名ASCII码从小到大排序（字典序）</li>
+<li>参数的值为空不参与签名</li>
+<li>参数名区分大小写</li>
+<li>如果参数的值是一个JSON对象或数组，需要将它进行字符串化处理</li>
 </ul></li>
-<li><p>Append the API Secrect to <code>stringA</code> with param name <code>key</code> as <code>stringB</code></p></li>
-<li><p>Use MD5 encode <code>stringB</code> and convert all characters to uppercasee to get the <code>signatureVal</code>.</p></li>
+<li><p>再将API Secrect作为<code>key</code>的值拼接到<code>stringA</code>中得到<code>stringB</code></p></li>
+<li><p>最后使用MD5对<code>stringB</code>做摘要并将结果转换成全部大写的<code>signatureVal</code></p></li>
 </ol>
-<h3 id='making-request'>Making request</h3>
-<p>For more details, please refer to <a href="#create-a-charge">Create a charge</a></p>
-<h3 id='receiving-events'>Receiving events</h3>
+<h3 id='making-request'>发送请求</h3>
+<p>更多详情，请参考<a href="#create-a-charge">创建充值</a></p>
+<h3 id='receiving-events'>订阅事件</h3>
 <blockquote>
 <p>Webhook Example - Headers</p>
 </blockquote>
@@ -619,29 +628,29 @@ Pay attention to below rules:</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>You can receive the event if adding a webhook subscription in <a href="https://w.mimos.io/commerce/en/settings">setting</a>.</p>
+<p>在<a href='https://w.mimos.io/commerce/en/settings'>设置</a>里订阅（设置Webhook地址）后，你将会收到对应的事件。</p>
 
-<p>Every MimosPay webhook request includes headers,</p>
+<p>所有MimosPay的Webhook请求都会包含以下请求头，</p>
 
 <ul>
-<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">your API Key</a></li>
-<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests</li>
-<li><code>X-MM-SIGNATURE</code>, MD5 signature of the request body <code>data</code> field, computed using your webhook shared secret of the API Key.</li>
+<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">你的API Key</a></li>
+<li><code>X-MM-NONCE</code>, 唯一的随机字符串用于防止重复请求</li>
+<li><code>X-MM-SIGNATURE</code>, 使用Webhook的共享Secrect，并通过MD5对请求内容中的<code>data</code>字段进行摘要签名</li>
 </ul>
 
-<p>Always make sure that you verify the webhook signature before acting on it inside your system.</p>
+<p>建议你在收到Webhook请求后，对请求内容进行签名校验</p>
 
-<p>The signature content,</p>
+<p>签名的内容包含,</p>
 
 <ul>
 <li><code>X-MM-APP-ID</code></li>
 <li><code>X-MM-NONCE</code></li>
-<li><code>event.data</code> in request payload</li>
+<li><code>event.data</code> 在请求内容中</li>
 </ul>
 
-<p>And signing the content by follow the <a href="#webhooks">rules</a></p>
+<p>签名方式参考<a href="#webhooks">规则</a></p>
 
-<p>For more details, please refer to <a href="#schema-event">Resource - Event</a>.</p>
+<p>更多详情，请参考<a href="#schema-event">Resource - Event</a>.</p>
 <h1 id='charges'>Charges</h1><h2 id='create-a-charge'>Create a charge</h2>
 <p>To get paid in cryptocurrency, you need to create a charge object.</p>
 
