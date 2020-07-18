@@ -1,11 +1,11 @@
-# Resources {#schema-resources}
+# I18n.t('resource.title') {#schema-resources}
 
 <aside class="notice">
-<code>Number</code> will represent as string in MimosPay.<br/><br/>
-Since some libraries and languages don't deserialize the JSON,
+I18n.t('resource.number_note1')<br/><br/>
+I18n.t('resource.number_note2')
 <ul>
-  <li>numeric fields with high precision</li>
-  <li>numbers beyond -(2<sup>53</sup> -1) ~ (2<sup>53</sup> - 1)</li>
+  <li>I18n.t('resource.number_note2_rule1')</li>
+  <li>I18n.t('resource.number_note2_rule2')-(2<sup>53</sup> -1) ~ (2<sup>53</sup> - 1)</li>
 </ul>
 </aside>
 

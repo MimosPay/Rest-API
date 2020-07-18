@@ -1,6 +1,6 @@
 # Webhooks {#webhooks}
 
-Webhooks make it easier to integrate with MimosPay by allowing you to subscribe to a set of charge events. You can subscribe to the events by going to your settings page and adding a new webhook subscription under your API Key.
+I18n.t('webhook.note')
 
 > Request Example - Headers
 
@@ -90,19 +90,21 @@ signatureVal = MD5(stringB).toUpperCase()
 signatureVal = HmacSHA256(stringB, secrect).toUpperCase()
 ```
 
-Verify the webhook request includes an `X-MM-SIGNATURE` header, computed using your webhook shared secret as the key,
+I18n.t('webhook.verify_request')
 
-1. Prepare the signature content
-  * `X-MM-APP-ID`, [your API Key][mimos-pay-settings]
-  * `X-MM-NONCE`, an unique string to enforce idempotence for POST requests
-  * `event.data` in request payload
+1. I18n.t('webhook.verify_request_step1')
+  * `X-MM-APP-ID`, [I18n.t(:your_api_key)][mimos-pay-settings]
+  * `X-MM-NONCE`, I18n.t('guide.signing_request_step1_nonce')
+  * `event.data`I18n.t('webhook.verify_request_payload')
 
-2. Sort the params by the non-empty key's ASCII in the ascending order and concatenate into `stringA` with URL key-value format(i.e. key1=value1&key2=value2…).<br /><br />
-Pay attention to below rules:
-  * Sort the params name in the ASCII ascending order
-  * The param with empty value is ignored
-  * The param name are case sensitive
-  * If the value is object, stringify the object to a JSON string.
+2. I18n.t('guide.signing_request_step2')<br />
+I18n.t('guide.signing_request_step2_note')
+  * I18n.t('guide.signing_request_step2_rule1')
+  * I18n.t('guide.signing_request_step2_rule2')
+  * I18n.t('guide.signing_request_step2_rule3')
+  * I18n.t('guide.signing_request_step2_rule4')
 
-3. Append the API Secrect to `stringA` with param name `key` as `stringB`
-4. Use MD5 encode `stringB` and convert all characters to uppercasee to get the `signatureVal`.
+3. I18n.t('guide.signing_request_step3')
+4. I18n.t('guide.signing_request_step4')
+
+[mimos-pay-settings]: https://w.mimos.io/commerce/en/settings

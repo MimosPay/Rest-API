@@ -1,12 +1,10 @@
-# Currencies  {#currencies}
+# I18n.t('currency.title')  {#currencies}
 
-## Fiat Currencies {#fiat-currencies}
+I18n.t('currency.note')
 
-ISO 4217 3-character currency code. This is the currency associated with the price field, supported currencies are available via the Currencies resource
+## I18n.t('currency.fiat_title') {#fiat-currencies}
 
-UNIX time when invoice is last available to be paid, in milliseconds
-
-The full list of currencies defined in [ISO 4217][iso_4217] presently available in the latest-updated.
+I18n.t('currency.fiat_note')
 
 | Code | Currency |
 | --- | --- |
@@ -182,12 +180,10 @@ The full list of currencies defined in [ISO 4217][iso_4217] presently available 
 | ZMW | Zambian Kwacha |
 | ZWL | Zimbabwean Dollar |
 
-## Crypto Currencies {#crypto-currencies}
+## I18n.t('currency.crypto_title') {#crypto-currencies}
 
 | Code | Currency | Payment Method/Network |
 | --- | --- | --- |
 | BTC | Bitcoin | bitcoin |
 | ETH | Ethereum | ethereum |
 | USDT | Tether-ERC20 | tether |
-
-[iso_4217]: https://en.wikipedia.org/wiki/ISO_4217

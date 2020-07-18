@@ -1,11 +1,11 @@
-# Charges {#charges}
+# I18n.t('charge.title') {#charges}
 
-## Create a charge {#create-a-charge}
+## I18n.t('charge.create_a_charge') {#create-a-charge}
 
-To get paid in cryptocurrency, you need to create a charge object.
+I18n.t('charge.create_a_charge_note')
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+I18n.t(:auth_required_key)
 </aside>
 
 > Code samples
@@ -109,11 +109,9 @@ print(r.json())
 
 ```
 
-### HTTP Request {#create-a-charge-request}
+### I18n.t(:http_request) {#create-a-charge-request}
 
 `POST /v1/charges`
-
-#### Request Parameters {#create-a-charge-request-params}
 
 > Body parameter
 
@@ -127,26 +125,26 @@ print(r.json())
 }
 ```
 
-#### Request Headers {#create-a-charge-request-headers}
+#### I18n.t(:http_request_headers) {#create-a-charge-request-headers}
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|X-MM-APP-ID|string|true|[Your API Key](https://w.mimos.io/commerce/en/settings)|
-|X-MM-TIMESTAMP|number|true|The UTC timestamp in millisecond|
-|X-MM-NONCE|string|true|An unique string|
-|X-MM-SIGNATURE|string|true|The request content signature|
+|X-MM-APP-ID|string|true|[I18n.t(:your_api_key)][mimos-pay-settings]|
+|X-MM-TIMESTAMP|number|true|I18n.t('field.utc_time_in_millis'), I18n.t('field.data_valid_in_5_min')|
+|X-MM-NONCE|string|true|I18n.t('field.nonce')|
+|X-MM-SIGNATURE|string|true|I18n.t('field.signature')|
 
-#### Request Body {#create-a-charge-request-body}
+#### I18n.t(:http_request_body) {#create-a-charge-request-body}
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|external_order_id|string|true|The order id of the merchant's own system|
-|name|string|true|The product/order name|
-|price|number|true|Price in local fiat currency|
-|currency|string|true|Local fiat currency, see [Supported Fiat Currencies](#fiat-currencies)|
-|metadata|string|false|The stringify of JSON value by merchant defined.<br/>MimosPay supported fields:<ul><li>image_url: the image will display on the customer page if the URL start with `http(s)` and end with <code>jpg&#124;gif&#124;png&#124;jpeg&#124;svg</code></ul></li>|
+|external_order_id|string|true|I18n.t('field.external_order_id')|
+|name|string|true|I18n.t('field.sku_name')|
+|price|number|true|I18n.t('field.sku_local_price')|
+|currency|string|true|I18n.t('field.sku_local_currency')[I18n.t('field.supported_fiat_currencies')](#fiat-currencies)|
+|metadata|string|false|I18n.t('field.metadata')<br/>I18n.t('field.metadata_note')<ul><li>image_url: I18n.t('field.metadata_url')</ul></li>|
 
-### HTTP Responses {#create-a-charge-response}
+### I18n.t(:http_response) {#create-a-charge-response}
 
 > Response Examples,
 
@@ -208,16 +206,16 @@ print(r.json())
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|[ApiResponse](#schema-apiresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error|[ApiResponse](#schema-apiresponse)|
 
-## Update a charge {#update-a-charge}
+## I18n.t('charge.upadte_a_charge') {#update-a-charge}
 
-Once a charge is created and the charge order has required information then the customer must choose the payment method and fill the email address to continue order.
+I18n.t('charge.upadte_a_charge_note1')
 
-And Mimos will provide the user with a cryptocurrency address to which they must send cryptocurrency.
+I18n.t('charge.upadte_a_charge_note2')
 
-Customer must broadcast a payment to the blockchain before the charge expires.
+I18n.t('charge.upadte_a_charge_note3')
 
 <aside class="success">
-This operation does not require authentication
+I18n.t(:no_auth_required)
 </aside>
 
 > Code samples
@@ -298,15 +296,15 @@ print(r.json())
 
 ```
 
-### HTTP Request {#update-a-charge-request}
+### I18n.t(:http_request) {#update-a-charge-request}
 
 `PUT /v1/charges/{order_identifier}`
 
 #### Request Path {#update-a-charge-request-path}
 
-`order_identifier`: The charge order identifier
+`order_identifier`: I18n.t('field.order_identifier')
 
-#### Request Parameters {#update-a-charge-request-params}
+#### I18n.t(:http_request_params) {#update-a-charge-request-params}
 
 > Body parameter
 
@@ -317,15 +315,15 @@ print(r.json())
 }
 ```
 
-#### Request Body {#update-a-charge-request-body}
+#### I18n.t(:http_request_body) {#update-a-charge-request-body}
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|payment_method|string|true|Payment method which is listed in [Supported Crypto Currencies](##crypto-currencies):<ul><li>ethereum</li><li>bitcoin</li><li>tether</li></ul>|
-|bill_address|string|false|Customer email address to receive payment or refund notifications|
-|customer_name|string|false|none|
+|payment_method|string|true|I18n.t('field.payment_method_list_in')[I18n.t('field.supported_crypto_currencies')](##crypto-currencies):<ul><li>ethereum</li><li>bitcoin</li><li>tether</li></ul>|
+|bill_address|string|false|I18n.t('field.bill_address')|
+|customer_name|string|false|I18n.t('field.customer_name')|
 
-### HTTP Responses {#update-a-charge-response}
+### I18n.t(:http_response) {#update-a-charge-response}
 
 > Response Examples,
 
@@ -378,13 +376,13 @@ print(r.json())
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|[ApiResponse](#schema-apiresponse)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error|[ApiResponse](#schema-apiresponse)|
 
-## Show a charge {#show-a-charge}
+## I18n.t('charge.show_a_charge') {#show-a-charge}
 
 <aside class="success">
-This operation does not require authentication
+I18n.t(:no_auth_required)
 </aside>
 
-Retrieves the details of a charge that has been previously created. Supply the unique charge indentifier that was returned when the charge was created. This information is also returned when a charge is first created.
+I18n.t('charge.show_a_charge_note')
 
 > Code samples
 
@@ -452,19 +450,19 @@ print(r.json())
 
 ```
 
-### HTTP Request {#show-a-charge-request}
+### I18n.t(:http_request) {#show-a-charge-request}
 
 `GET /v1/charges/{order_identifier}`
 
 #### Request Path {#show-a-charge-request-path}
 
-`order_identifier`: The charge order identifier
+`order_identifier`: I18n.t('field.order_identifier')
 
-#### Request Parameters {#show-a-charge-request-params}
+#### I18n.t(:http_request_params) {#show-a-charge-request-params}
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|show_details|boolean|false|default as true|
+|show_details|boolean|false|I18n.t('field.show_details')|
 
 > Example responses
 
@@ -562,7 +560,7 @@ print(r.json())
 }
 ```
 
-### HTTP Responses {#show-a-charge-response}
+### I18n.t(:http_response) {#show-a-charge-response}
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|

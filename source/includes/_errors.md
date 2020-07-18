@@ -1,6 +1,6 @@
-# Errors {#errors}
+# I18n.t('error.title') {#errors}
 
-The MimosPay API uses the following error codes:
+I18n.t('error.note')
 
 Code | Meaning
 ---------- | -------
