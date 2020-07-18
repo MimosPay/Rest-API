@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>MimosPay API Reference</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -654,8 +654,8 @@ Pay attention to below rules:</p>
 <h1 id='charges'>Charges</h1><h2 id='create-a-charge'>Create a charge</h2>
 <p>To get paid in cryptocurrency, you need to create a charge object.</p>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation must be authenticated with an API key
 </aside>
 
 <blockquote>
@@ -750,7 +750,7 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 
 </code></pre></div><h3 id='create-a-charge-request'>HTTP Request</h3>
 <p><code>POST /v1/charges</code></p>
-<h4 id='create-a-charge-request-params'>Request Parameters</h4>
+
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -774,25 +774,25 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <td>X-MM-APP-ID</td>
 <td>string</td>
 <td>true</td>
-<td><a href="https://w.mimos.io/commerce/en/settings">Your API Key</a></td>
+<td><a href="https://w.mimos.io/commerce/en/settings">your API Key</a></td>
 </tr>
 <tr>
 <td>X-MM-TIMESTAMP</td>
 <td>number</td>
 <td>true</td>
-<td>The UTC timestamp in millisecond</td>
+<td>The UTC timestamp in millisecond, must be within 5 minutes</td>
 </tr>
 <tr>
 <td>X-MM-NONCE</td>
 <td>string</td>
 <td>true</td>
-<td>An unique string</td>
+<td>An unique string, in order to prevent duplicate submission</td>
 </tr>
 <tr>
 <td>X-MM-SIGNATURE</td>
 <td>string</td>
 <td>true</td>
-<td>The request content signature</td>
+<td>The signature of request content</td>
 </tr>
 </tbody></table>
 <h4 id='create-a-charge-request-body'>Request Body</h4>
@@ -808,7 +808,7 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <td>external_order_id</td>
 <td>string</td>
 <td>true</td>
-<td>The order id of the merchant&#39;s own system</td>
+<td>The order id of the merchant's own system</td>
 </tr>
 <tr>
 <td>name</td>
@@ -1033,7 +1033,7 @@ curl <span class="nt">-X</span> PUT https://api.mimos.io/crypto-checkout/v1/char
 <td>customer_name</td>
 <td>string</td>
 <td>false</td>
-<td>none</td>
+<td>Customer name</td>
 </tr>
 </tbody></table>
 <h3 id='update-a-charge-response'>HTTP Responses</h3>
@@ -1187,7 +1187,7 @@ curl <span class="nt">-X</span> GET https://api.mimos.io/crypto-checkout/v1/char
 <td>show_details</td>
 <td>boolean</td>
 <td>false</td>
-<td>default as true</td>
+<td>Show details or not, default as true/yes</td>
 </tr>
 </tbody></table>
 
@@ -1410,11 +1410,11 @@ signatureVal <span class="o">=</span> HmacSHA256<span class="o">(</span>stringB,
 <li><p>Prepare the signature content</p>
 
 <ul>
-<li><code>X-MM-APP-ID</code>, [your API Key][mimos-pay-settings]</li>
-<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests</li>
+<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">your API Key</a></li>
+<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests.</li>
 <li><code>event.data</code> in request payload</li>
 </ul></li>
-<li><p>Sort the params by the non-empty key&#39;s ASCII in the ascending order and concatenate into <code>stringA</code> with URL key-value format(i.e. key1=value1&amp;key2=value2…).<br /><br />
+<li><p>Sort the params by the non-empty key's ASCII in the ascending order and concatenate into <code>stringA</code> with URL key-value format(i.e. key1=value1&key2=value2…)<br />
 Pay attention to below rules:</p>
 
 <ul>
@@ -1424,7 +1424,7 @@ Pay attention to below rules:</p>
 <li>If the value is object, stringify the object to a JSON string.</li>
 </ul></li>
 <li><p>Append the API Secrect to <code>stringA</code> with param name <code>key</code> as <code>stringB</code></p></li>
-<li><p>Use MD5 encode <code>stringB</code> and convert all characters to uppercasee to get the <code>signatureVal</code>.</p></li>
+<li><p>Use MD5 encode <code>stringB</code> and convert all characters to uppercasee to get the <code>signatureVal</code></p></li>
 </ol>
 <h1 id='schema-resources'>Resources</h1>
 <aside class="notice">
@@ -2124,12 +2124,10 @@ Since some libraries and languages don't deserialize the JSON,
 <td>The charge failed to complete, for:<ul><li>Payment expired</li><li>Payment underpaid</li></ul></td>
 </tr>
 </tbody></table>
-<h1 id='currencies'>Currencies</h1><h2 id='fiat-currencies'>Fiat Currencies</h2>
-<p>ISO 4217 3-character currency code. This is the currency associated with the price field, supported currencies are available via the Currencies resource</p>
-
-<p>UNIX time when invoice is last available to be paid, in milliseconds</p>
-
-<p>The full list of currencies defined in <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> presently available in the latest-updated.</p>
+<h1 id='currencies'>Currencies</h1>
+<p>This are the currencies associated with the price field.</p>
+<h2 id='fiat-currencies'>Fiat Currencies</h2>
+<p>The full list of currencies defined in <a href='https://en.wikipedia.org/wiki/ISO_4217'>ISO 4217</a> presently available in the latest-updated.</p>
 
 <table><thead>
 <tr>

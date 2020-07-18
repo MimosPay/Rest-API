@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>接口文档</title>
+    <title>MimosPay 接口文档</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -321,16 +321,16 @@
               </ul>
           </li>
           <li>
-            <a href="#charges" class="toc-h1 toc-link" data-title="Charges">Charges</a>
+            <a href="#charges" class="toc-h1 toc-link" data-title="充值（收款）">充值（收款）</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-a-charge" class="toc-h2 toc-link" data-title="Create a charge">Create a charge</a>
+                    <a href="#create-a-charge" class="toc-h2 toc-link" data-title="创建充值（收款）订单">创建充值（收款）订单</a>
                   </li>
                   <li>
-                    <a href="#update-a-charge" class="toc-h2 toc-link" data-title="Update a charge">Update a charge</a>
+                    <a href="#update-a-charge" class="toc-h2 toc-link" data-title="更新充值（收款）订单">更新充值（收款）订单</a>
                   </li>
                   <li>
-                    <a href="#show-a-charge" class="toc-h2 toc-link" data-title="Show a charge">Show a charge</a>
+                    <a href="#show-a-charge" class="toc-h2 toc-link" data-title="查询充值（收款）订单">查询充值（收款）订单</a>
                   </li>
               </ul>
           </li>
@@ -338,7 +338,7 @@
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
           </li>
           <li>
-            <a href="#schema-resources" class="toc-h1 toc-link" data-title="Resources">Resources</a>
+            <a href="#schema-resources" class="toc-h1 toc-link" data-title="资源定义">资源定义</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#schema-apiresponse" class="toc-h2 toc-link" data-title="ApiResponse">ApiResponse</a>
@@ -355,18 +355,18 @@
               </ul>
           </li>
           <li>
-            <a href="#currencies" class="toc-h1 toc-link" data-title="Currencies">Currencies</a>
+            <a href="#currencies" class="toc-h1 toc-link" data-title="支持的货币">支持的货币</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#fiat-currencies" class="toc-h2 toc-link" data-title="Fiat Currencies">Fiat Currencies</a>
+                    <a href="#fiat-currencies" class="toc-h2 toc-link" data-title="法定货币">法定货币</a>
                   </li>
                   <li>
-                    <a href="#crypto-currencies" class="toc-h2 toc-link" data-title="Crypto Currencies">Crypto Currencies</a>
+                    <a href="#crypto-currencies" class="toc-h2 toc-link" data-title="加密货币">加密货币</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#errors" class="toc-h1 toc-link" data-title="异常错误">异常错误</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -556,7 +556,7 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <li><p>最后使用MD5对<code>stringB</code>做摘要并将结果转换成全部大写的<code>signatureVal</code></p></li>
 </ol>
 <h3 id='making-request'>发送请求</h3>
-<p>更多详情，请参考<a href="#create-a-charge">创建充值</a></p>
+<p>更多详情，请参考<a href="#create-a-charge">创建充值（收款）订单</a></p>
 <h3 id='receiving-events'>订阅事件</h3>
 <blockquote>
 <p>Webhook Example - Headers</p>
@@ -628,7 +628,7 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>在<a href='https://w.mimos.io/commerce/en/settings'>设置</a>里订阅（设置Webhook地址）后，你将会收到对应的事件。</p>
+<p>在<a href='https://w.mimos.io/commerce/settings'>设置</a>里订阅（设置Webhook地址）后，你将会收到对应的事件。</p>
 
 <p>所有MimosPay的Webhook请求都会包含以下请求头，</p>
 
@@ -651,11 +651,11 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <p>签名方式参考<a href="#webhooks">规则</a></p>
 
 <p>更多详情，请参考<a href="#schema-event">Resource - Event</a>.</p>
-<h1 id='charges'>Charges</h1><h2 id='create-a-charge'>Create a charge</h2>
-<p>To get paid in cryptocurrency, you need to create a charge object.</p>
+<h1 id='charges'>充值（收款）</h1><h2 id='create-a-charge'>创建充值（收款）订单</h2>
+<p>你需要创建一笔充值（收款）订单来接受加密货币付款</p>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+此操作必须使用API密钥进行认证
 </aside>
 
 <blockquote>
@@ -748,9 +748,9 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
-</code></pre></div><h3 id='create-a-charge-request'>HTTP Request</h3>
+</code></pre></div><h3 id='create-a-charge-request'>HTTP请求</h3>
 <p><code>POST /v1/charges</code></p>
-<h4 id='create-a-charge-request-params'>Request Parameters</h4>
+
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -761,7 +761,7 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\"</span><span class="s2">image_url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://images-na.ssl-images-amazon.com/images/I/61wjAvw5B2L._AC_SX425_.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">customer_id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">123456</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">customer_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">my-user-name</span><span class="se">\"</span><span class="s2">}"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='create-a-charge-request-headers'>Request Headers</h4>
+</span></code></pre></div><h4 id='create-a-charge-request-headers'>请求头</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -774,28 +774,28 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <td>X-MM-APP-ID</td>
 <td>string</td>
 <td>true</td>
-<td><a href="https://w.mimos.io/commerce/en/settings">Your API Key</a></td>
+<td><a href="https://w.mimos.io/commerce/en/settings">你的API Key</a></td>
 </tr>
 <tr>
 <td>X-MM-TIMESTAMP</td>
 <td>number</td>
 <td>true</td>
-<td>The UTC timestamp in millisecond</td>
+<td>UTC时间戳，以毫秒为单位, 5分钟内数据有效</td>
 </tr>
 <tr>
 <td>X-MM-NONCE</td>
 <td>string</td>
 <td>true</td>
-<td>An unique string</td>
+<td>唯一的随机字符串, 防止重复提交</td>
 </tr>
 <tr>
 <td>X-MM-SIGNATURE</td>
 <td>string</td>
 <td>true</td>
-<td>The request content signature</td>
+<td>请求内容的签名</td>
 </tr>
 </tbody></table>
-<h4 id='create-a-charge-request-body'>Request Body</h4>
+<h4 id='create-a-charge-request-body'>请求主体</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -808,34 +808,34 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <td>external_order_id</td>
 <td>string</td>
 <td>true</td>
-<td>The order id of the merchant&#39;s own system</td>
+<td>商户系统中的订单号</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>true</td>
-<td>The product/order name</td>
+<td>商品订单名称</td>
 </tr>
 <tr>
 <td>price</td>
 <td>number</td>
 <td>true</td>
-<td>Price in local fiat currency</td>
+<td>本地法币价格</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>string</td>
 <td>true</td>
-<td>Local fiat currency, see <a href="#fiat-currencies">Supported Fiat Currencies</a></td>
+<td>本地法币币种, 请参考<a href="#fiat-currencies">支持的法币币种</a></td>
 </tr>
 <tr>
 <td>metadata</td>
 <td>string</td>
 <td>false</td>
-<td>The stringify of JSON value by merchant defined.<br/>MimosPay supported fields:<ul><li>image_url: the image will display on the customer page if the URL start with <code>http(s)</code> and end with <code>jpg&#124;gif&#124;png&#124;jpeg&#124;svg</code></ul></li></td>
+<td>商户自定义内容，JSON格式并字符串化<br/>MimosPay支持的字段，如下：<ul><li>image_url: 客户将在收银台页面看到的图片缩略图，地址格式应以<code>http(s)</code>开头，并且以后缀作为结尾<code>jpg&#124;gif&#124;png&#124;jpeg&#124;svg</code></ul></li></td>
 </tr>
 </tbody></table>
-<h3 id='create-a-charge-response'>HTTP Responses</h3>
+<h3 id='create-a-charge-response'>请求响应</h3>
 <blockquote>
 <p>Response Examples,</p>
 </blockquote>
@@ -918,15 +918,15 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <td><a href="#schema-apiresponse">ApiResponse</a></td>
 </tr>
 </tbody></table>
-<h2 id='update-a-charge'>Update a charge</h2>
-<p>Once a charge is created and the charge order has required information then the customer must choose the payment method and fill the email address to continue order.</p>
+<h2 id='update-a-charge'>更新充值（收款）订单</h2>
+<p>如果在创建订单时候，包含了必填信息的设置，客户将需要填写必要信息以继续支付。默认必填信息：用户账单邮件地址，支付方式。</p>
 
-<p>And Mimos will provide the user with a cryptocurrency address to which they must send cryptocurrency.</p>
+<p>同时MimosPay将提供加密货币地址，以接收当前充值（收款）。</p>
 
-<p>Customer must broadcast a payment to the blockchain before the charge expires.</p>
+<p>客户应该订单超时前进行加密货币的付款。</p>
 
 <aside class="success">
-This operation does not require authentication
+当前操作不需要用户认证
 </aside>
 
 <blockquote>
@@ -996,11 +996,11 @@ curl <span class="nt">-X</span> PUT https://api.mimos.io/crypto-checkout/v1/char
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
-</code></pre></div><h3 id='update-a-charge-request'>HTTP Request</h3>
+</code></pre></div><h3 id='update-a-charge-request'>HTTP请求</h3>
 <p><code>PUT /v1/charges/{order_identifier}</code></p>
 <h4 id='update-a-charge-request-path'>Request Path</h4>
-<p><code>order_identifier</code>: The charge order identifier</p>
-<h4 id='update-a-charge-request-params'>Request Parameters</h4>
+<p><code>order_identifier</code>: 订单唯一标识符</p>
+<h4 id='update-a-charge-request-params'>请求参数</h4>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -1008,7 +1008,7 @@ curl <span class="nt">-X</span> PUT https://api.mimos.io/crypto-checkout/v1/char
   </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="s2">"ethereum"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bill_address"</span><span class="p">:</span><span class="s2">"test@test.io"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='update-a-charge-request-body'>Request Body</h4>
+</span></code></pre></div><h4 id='update-a-charge-request-body'>请求主体</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1021,22 +1021,22 @@ curl <span class="nt">-X</span> PUT https://api.mimos.io/crypto-checkout/v1/char
 <td>payment_method</td>
 <td>string</td>
 <td>true</td>
-<td>Payment method which is listed in <a href="##crypto-currencies">Supported Crypto Currencies</a>:<ul><li>ethereum</li><li>bitcoin</li><li>tether</li></ul></td>
+<td>支付方式，参考：<a href="##crypto-currencies">支持的加密货币币种</a>:<ul><li>ethereum</li><li>bitcoin</li><li>tether</li></ul></td>
 </tr>
 <tr>
 <td>bill_address</td>
 <td>string</td>
 <td>false</td>
-<td>Customer email address to receive payment or refund notifications</td>
+<td>客户电子邮箱地址，用于接收支付或是退款状态通知</td>
 </tr>
 <tr>
 <td>customer_name</td>
 <td>string</td>
 <td>false</td>
-<td>none</td>
+<td>客户名</td>
 </tr>
 </tbody></table>
-<h3 id='update-a-charge-response'>HTTP Responses</h3>
+<h3 id='update-a-charge-response'>请求响应</h3>
 <blockquote>
 <p>Response Examples,</p>
 </blockquote>
@@ -1108,12 +1108,12 @@ curl <span class="nt">-X</span> PUT https://api.mimos.io/crypto-checkout/v1/char
 <td><a href="#schema-apiresponse">ApiResponse</a></td>
 </tr>
 </tbody></table>
-<h2 id='show-a-charge'>Show a charge</h2>
+<h2 id='show-a-charge'>查询充值（收款）订单</h2>
 <aside class="success">
-This operation does not require authentication
+当前操作不需要用户认证
 </aside>
 
-<p>Retrieves the details of a charge that has been previously created. Supply the unique charge indentifier that was returned when the charge was created. This information is also returned when a charge is first created.</p>
+<p>通过订单唯一标识符查询订单详细信息。创建订单成功时，也会返回当前订单详细信息。</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1170,11 +1170,11 @@ curl <span class="nt">-X</span> GET https://api.mimos.io/crypto-checkout/v1/char
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
-</code></pre></div><h3 id='show-a-charge-request'>HTTP Request</h3>
+</code></pre></div><h3 id='show-a-charge-request'>HTTP请求</h3>
 <p><code>GET /v1/charges/{order_identifier}</code></p>
 <h4 id='show-a-charge-request-path'>Request Path</h4>
-<p><code>order_identifier</code>: The charge order identifier</p>
-<h4 id='show-a-charge-request-params'>Request Parameters</h4>
+<p><code>order_identifier</code>: 订单唯一标识符</p>
+<h4 id='show-a-charge-request-params'>请求参数</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1187,7 +1187,7 @@ curl <span class="nt">-X</span> GET https://api.mimos.io/crypto-checkout/v1/char
 <td>show_details</td>
 <td>boolean</td>
 <td>false</td>
-<td>default as true</td>
+<td>显示详细信息，默认：是</td>
 </tr>
 </tbody></table>
 
@@ -1284,7 +1284,7 @@ curl <span class="nt">-X</span> GET https://api.mimos.io/crypto-checkout/v1/char
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='show-a-charge-response'>HTTP Responses</h3>
+</span></code></pre></div><h3 id='show-a-charge-response'>请求响应</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1319,7 +1319,7 @@ curl <span class="nt">-X</span> GET https://api.mimos.io/crypto-checkout/v1/char
 </tr>
 </tbody></table>
 <h1 id='webhooks'>Webhooks</h1>
-<p>Webhooks make it easier to integrate with MimosPay by allowing you to subscribe to a set of charge events. You can subscribe to the events by going to your settings page and adding a new webhook subscription under your API Key.</p>
+<p>Webhooks (回调通知)可以帮助商户更及时的掌握充值（收款）相关事件。可以通过设置页面编辑你的API Key配置对应的URL来订阅事件。</p>
 
 <blockquote>
 <p>Request Example - Headers</p>
@@ -1404,35 +1404,35 @@ signatureVal <span class="o">=</span> MD5<span class="o">(</span>stringB<span cl
 <span class="c"># HmacSHA256, '7E758388691B06E1CCFC92F73F934CDEFB71B913434DEF3FB925B2CCDA54D622'</span>
 signatureVal <span class="o">=</span> HmacSHA256<span class="o">(</span>stringB, secrect<span class="o">)</span>.toUpperCase<span class="o">()</span>
 </code></pre></div>
-<p>Verify the webhook request includes an <code>X-MM-SIGNATURE</code> header, computed using your webhook shared secret as the key,</p>
+<p>使用Webhook的共享密钥来验证MimosPay发出的请求头里的<code>X-MM-SIGNATURE</code>，</p>
 
 <ol>
-<li><p>Prepare the signature content</p>
+<li><p>准备签名内容</p>
 
 <ul>
-<li><code>X-MM-APP-ID</code>, [your API Key][mimos-pay-settings]</li>
-<li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests</li>
-<li><code>event.data</code> in request payload</li>
+<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">你的API Key</a></li>
+<li><code>X-MM-NONCE</code>, 唯一的随机字符串用于防止重复请求</li>
+<li><code>event.data</code>，包含在请求主体中</li>
 </ul></li>
-<li><p>Sort the params by the non-empty key&#39;s ASCII in the ascending order and concatenate into <code>stringA</code> with URL key-value format(i.e. key1=value1&amp;key2=value2…).<br /><br />
-Pay attention to below rules:</p>
+<li><p>将请求头和请求内容以key-value格式按照ASCII码升序排序（value不为空）并以URL键值对(比如：key1=value1&key2=value2…)拼接成字符串<code>stringA</code><br />
+请留意以下规则：</p>
 
 <ul>
-<li>Sort the params name in the ASCII ascending order</li>
-<li>The param with empty value is ignored</li>
-<li>The param name are case sensitive</li>
-<li>If the value is object, stringify the object to a JSON string.</li>
+<li>参数名ASCII码从小到大排序（字典序）</li>
+<li>参数的值为空不参与签名</li>
+<li>参数名区分大小写</li>
+<li>如果参数的值是一个JSON对象或数组，需要将它进行字符串化处理</li>
 </ul></li>
-<li><p>Append the API Secrect to <code>stringA</code> with param name <code>key</code> as <code>stringB</code></p></li>
-<li><p>Use MD5 encode <code>stringB</code> and convert all characters to uppercasee to get the <code>signatureVal</code>.</p></li>
+<li><p>再将API Secrect作为<code>key</code>的值拼接到<code>stringA</code>中得到<code>stringB</code></p></li>
+<li><p>最后使用MD5对<code>stringB</code>做摘要并将结果转换成全部大写的<code>signatureVal</code></p></li>
 </ol>
-<h1 id='schema-resources'>Resources</h1>
+<h1 id='schema-resources'>资源定义</h1>
 <aside class="notice">
-<code>Number</code> will represent as string in MimosPay.<br/><br/>
-Since some libraries and languages don't deserialize the JSON,
+<code>Number</code>类型在MimosPay中表示为字符串<br/><br/>
+以避免某些库和语言无法正常反序列化JSON，
 <ul>
-  <li>numeric fields with high precision</li>
-  <li>numbers beyond -(2<sup>53</sup> -1) ~ (2<sup>53</sup> - 1)</li>
+  <li>要求高精度的数字字段</li>
+  <li>数字范围超过-(2<sup>53</sup> -1) ~ (2<sup>53</sup> - 1)</li>
 </ul>
 </aside>
 <h2 id='schema-apiresponse'>ApiResponse</h2>
@@ -2124,12 +2124,10 @@ Since some libraries and languages don't deserialize the JSON,
 <td>The charge failed to complete, for:<ul><li>Payment expired</li><li>Payment underpaid</li></ul></td>
 </tr>
 </tbody></table>
-<h1 id='currencies'>Currencies</h1><h2 id='fiat-currencies'>Fiat Currencies</h2>
-<p>ISO 4217 3-character currency code. This is the currency associated with the price field, supported currencies are available via the Currencies resource</p>
-
-<p>UNIX time when invoice is last available to be paid, in milliseconds</p>
-
-<p>The full list of currencies defined in <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> presently available in the latest-updated.</p>
+<h1 id='currencies'>支持的货币</h1>
+<p>以下是和价格相关的货币列表。</p>
+<h2 id='fiat-currencies'>法定货币</h2>
+<p>MimosPay当前支持<a href='https://zh.wikipedia.org/wiki/ISO_4217'>ISO 4217</a>中定义的货币列表。</p>
 
 <table><thead>
 <tr>
@@ -2822,7 +2820,7 @@ Since some libraries and languages don't deserialize the JSON,
 <td>Zimbabwean Dollar</td>
 </tr>
 </tbody></table>
-<h2 id='crypto-currencies'>Crypto Currencies</h2>
+<h2 id='crypto-currencies'>加密货币</h2>
 <table><thead>
 <tr>
 <th>Code</th>
@@ -2846,8 +2844,8 @@ Since some libraries and languages don't deserialize the JSON,
 <td>tether</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<p>The MimosPay API uses the following error codes:</p>
+<h1 id='errors'>异常错误</h1>
+<p>MimosPay API接口使用以下HTTP中定义的错误代码，</p>
 
 <table><thead>
 <tr>
