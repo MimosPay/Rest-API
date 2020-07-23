@@ -85,12 +85,19 @@ func main() {
 ```
 
 ```python
+import json
 import requests
+import hashlib
+
+appId = '9b0798f2971148ba9828820612ae34bb'
+appKey = 'gPGZwIu7r5bVP6B8q0HDrEtpM8VOqkTEjXkdfh4lGjYUum7h5ohYoJEfcmaxVork'
+timestamp = 1595497196656
+
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'X-MM-APP-ID': '6e1dd7ce21874898b0b77b3288f006fa',
-  'X-MM-TIMESTAMP': '1594643572157',
+  'X-MM-APP-ID': appId,
+  'X-MM-TIMESTAMP': "{}".format(timestamp),
   'X-MM-SIGNATURE': 'B0499D4EDF0D82A6B18C192311C0C97C',
   'X-MM-NONCE': 'ttmx9loxhtl'
 }
@@ -99,11 +106,33 @@ payload = {
   "metadata": "{\"image_url\":\"https://images-na.ssl-images-amazon.com/images/I/61wjAvw5B2L._AC_SX425_.jpg\",\"customer_id\":\"123456\",\"customer_name\":\"my-user-name\"}",
   "price": "599",
   "name": "iphone 11",
-  "external_order_id": "yz7ls58srfih1zmr4dw6y",
+  "external_order_id": "order-ad-{}".format(timestamp),
   "currency": "USD"
 }
 
-r = requests.post('https://api.mimos.io/crypto-checkout/v1/charges', data = payload, headers = headers)
+total = {'X-MM-APP-ID': headers['X-MM-APP-ID'], 'X-MM-NONCE': headers['X-MM-NONCE'],
+         'X-MM-TIMESTAMP': headers['X-MM-TIMESTAMP']}
+
+# add payload TotalPrapameter
+for k in list(payload.keys()):
+   total[k]=payload[k]
+
+t_keys = list(total.keys())
+t_keys.sort()
+
+stringA = ""
+for k in t_keys :
+  stringA+= "{}={}&".format(k, total[k])
+
+stringA+= "key={}".format(appKey)
+
+m = hashlib.md5()
+m.update(stringA.encode("utf-8"))
+h = m.hexdigest().upper()
+
+headers['X-MM-SIGNATURE'] = h
+
+r = requests.post('https://api.dev.mimos.io/crypto-checkout/v1/charges', data = json.dumps(payload), headers = headers)
 
 print(r.json())
 

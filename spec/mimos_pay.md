@@ -588,11 +588,10 @@ func main() {
 import json
 import requests
 import hashlib
-import time
 
 appId = '9b0798f2971148ba9828820612ae34bb'
 appKey = 'gPGZwIu7r5bVP6B8q0HDrEtpM8VOqkTEjXkdfh4lGjYUum7h5ohYoJEfcmaxVork'
-timestamp = int(time.time()*1000)
+timestamp = 1595497196656
 
 headers = {
   'Content-Type': 'application/json',
@@ -635,7 +634,7 @@ headers['X-MM-SIGNATURE'] = h
 
 r = requests.post('https://api.dev.mimos.io/crypto-checkout/v1/charges', data = json.dumps(payload), headers = headers)
 
- print(r.json())
+print(r.json())
 
 ```
 
