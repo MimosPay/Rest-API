@@ -134,7 +134,7 @@ headers['X-MM-SIGNATURE'] = h
 
 r = requests.post('https://api.dev.mimos.io/crypto-checkout/v1/charges', data = json.dumps(payload), headers = headers)
 
- print(r.json())
+print(r.json())
 
 ```
 
