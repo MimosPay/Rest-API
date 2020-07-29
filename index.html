@@ -370,7 +370,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://w.mimos.io/commerce'>Sign Up to get API credentials</a></li>
+            <li><a href='https://mimos.io/commerce'>Sign Up to get API credentials</a></li>
             <li><a href='https://github.com/MimosPay/Rest-API'>Documentation Powered by Slate</a></li>
         </ul>
       <!-- change language -->
@@ -385,7 +385,7 @@
 <p>The Mimos Commerce provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.</p>
 
 <ul>
-<li><a href="https://w.mimos.io/commerce/legal/terms-of-service">Terms of service</a></li>
+<li><a href="https://mimos.io/commerce/legal/terms-of-service">Terms of service</a></li>
 <li><a href="https://mimos.io/">License - Commercial Use License</a></li>
 </ul>
 
@@ -538,7 +538,7 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <li><p>Prepare the request headers and body</p>
 
 <ul>
-<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">your API Key</a></li>
+<li><code>X-MM-APP-ID</code>, <a href="https://mimos.io/commerce/en/settings">your API Key</a></li>
 <li><code>X-MM-TIMESTAMP</code>, the UTC timestamp when API request, the unit is millisecond. The client timestamp included with the request must be within 5 minutes of the MimosPay system time when the request is received. If not, the request will fail with the <code>Invalid X-MM-TIMESTAMP</code> error</li>
 <li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests.</li>
 <li>request payload</li>
@@ -628,12 +628,12 @@ Pay attention to below rules:</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>You can receive the event if adding a webhook subscription in <a href='https://w.mimos.io/commerce/en/settings'>Settings</a>.</p>
+<p>You can receive the event if adding a webhook subscription in <a href='https://mimos.io/commerce/en/settings'>Settings</a>.</p>
 
 <p>Every MimosPay webhook request includes headers,</p>
 
 <ul>
-<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">your API Key</a></li>
+<li><code>X-MM-APP-ID</code>, <a href="https://mimos.io/commerce/en/settings">your API Key</a></li>
 <li><code>X-MM-NONCE</code>, an unique string to enforce idempotence for POST requests.</li>
 <li><code>X-MM-SIGNATURE</code>, MD5 signature of the request body <code>data</code> field, computed using your webhook shared secret of the API Key</li>
 </ul>

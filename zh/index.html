@@ -370,7 +370,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://w.mimos.io/commerce'>Sign Up to get API credentials</a></li>
+            <li><a href='https://mimos.io/commerce'>Sign Up to get API credentials</a></li>
             <li><a href='https://github.com/MimosPay/Rest-API'>Documentation Powered by Slate</a></li>
         </ul>
       <!-- change language -->
@@ -385,7 +385,7 @@
 <p>Mimos Commerce提供了一个简单而强大的REST API，可将加密货币付款集成到您的业务或应用程序中。 该API参考文档提供了有关可用服务的可访问点以及如何与它们交互的信息。</p>
 
 <ul>
-<li><a href="https://w.mimos.io/commerce/legal/terms-of-service">Terms of service</a></li>
+<li><a href="https://mimos.io/commerce/legal/terms-of-service">Terms of service</a></li>
 <li><a href="https://mimos.io/">License - Commercial Use License</a></li>
 </ul>
 
@@ -538,7 +538,7 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <li><p>准备请求头和请求内容</p>
 
 <ul>
-<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">你的API Key</a></li>
+<li><code>X-MM-APP-ID</code>, <a href="https://mimos.io/commerce/en/settings">你的API Key</a></li>
 <li><code>X-MM-TIMESTAMP</code>, API请求带上UTC时间戳，以毫秒为单位。客户端时间戳和系统时间戳最多允许5分钟的时间差，超过此范围将会返回<code>Invalid X-MM-TIMESTAMP</code>异常</li>
 <li><code>X-MM-NONCE</code>, 唯一的随机字符串用于防止重复请求</li>
 <li>请求主体内容</li>
@@ -628,12 +628,12 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>在<a href='https://w.mimos.io/commerce/settings'>设置</a>里订阅（设置Webhook地址）后，你将会收到对应的事件。</p>
+<p>在<a href='https://mimos.io/commerce/settings'>设置</a>里订阅（设置Webhook地址）后，你将会收到对应的事件。</p>
 
 <p>所有MimosPay的Webhook请求都会包含以下请求头，</p>
 
 <ul>
-<li><code>X-MM-APP-ID</code>, <a href="https://w.mimos.io/commerce/en/settings">你的API Key</a></li>
+<li><code>X-MM-APP-ID</code>, <a href="https://mimos.io/commerce/en/settings">你的API Key</a></li>
 <li><code>X-MM-NONCE</code>, 唯一的随机字符串用于防止重复请求</li>
 <li><code>X-MM-SIGNATURE</code>, 使用Webhook的共享Secrect，并通过MD5对请求内容中的<code>data</code>字段进行摘要签名</li>
 </ul>
