@@ -576,7 +576,7 @@
       "url": "https://mimos.io/"
     },
     "description": "The Mimos Commerce provides a simple and powerful REST API to integrate crypto-currency payments into your business or application. This API reference provides information on available endpoints and how to interact with them.",
-    "termsOfService": "https://w.mimos.io/commerce/legal/terms-of-service",
+    "termsOfService": "https://mimos.io/commerce/legal/terms-of-service",
     "title": "Mimos Commerce API",
     "version": "v1.0.0"
   }

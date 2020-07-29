@@ -32,7 +32,7 @@ Base URLs:
 
 * <a href="http://localhost:8081/crypto-checkout">http://localhost:8081/crypto-checkout</a>
 
-<a href="https://w.mimos.io/commerce/legal/terms-of-service">Terms of service</a>
+<a href="https://mimos.io/commerce/legal/terms-of-service">Terms of service</a>
 
 License: <a href="https://mimos.io/">Commercial Use License</a>
 

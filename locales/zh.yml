@@ -48,7 +48,7 @@ zh:
     making_request: "发送请求"
     making_request_note: "更多详情，请参考"
     receiving_events: "订阅事件"
-    receiving_events_note: "在<a href='https://w.mimos.io/commerce/settings'>设置</a>里订阅（设置Webhook地址）后，你将会收到对应的事件。"
+    receiving_events_note: "在<a href='https://mimos.io/commerce/settings'>设置</a>里订阅（设置Webhook地址）后，你将会收到对应的事件。"
     receiving_events_webhook_note: "所有MimosPay的Webhook请求都会包含以下请求头，"
     receiving_events_webhook_signature: "使用Webhook的共享Secrect，并通过MD5对请求内容中的<code>data</code>字段进行摘要签名"
     receiving_events_webhook_note2: "建议你在收到Webhook请求后，对请求内容进行签名校验"

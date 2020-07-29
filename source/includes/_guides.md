@@ -271,4 +271,4 @@ I18n.t('guide.receiving_events_webhook_rule')[I18n.t(:rules)](#webhooks)
 
 I18n.t('guide.making_request_note')[Resource - Event](#schema-event).
 
-[mimos-pay-settings]: https://w.mimos.io/commerce/en/settings
+[mimos-pay-settings]: https://mimos.io/commerce/en/settings

@@ -48,7 +48,7 @@ en:
     making_request: "Making request"
     making_request_note: "For more details, please refer to "
     receiving_events: "Receiving events"
-    receiving_events_note: "You can receive the event if adding a webhook subscription in <a href='https://w.mimos.io/commerce/en/settings'>Settings</a>."
+    receiving_events_note: "You can receive the event if adding a webhook subscription in <a href='https://mimos.io/commerce/en/settings'>Settings</a>."
     receiving_events_webhook_note: "Every MimosPay webhook request includes headers,"
     receiving_events_webhook_signature: "MD5 signature of the request body <code>data</code> field, computed using your webhook shared secret of the API Key"
     receiving_events_webhook_note2: "Always make sure that you verify the webhook signature before acting on it inside your system."
