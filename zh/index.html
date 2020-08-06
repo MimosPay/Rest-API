@@ -289,7 +289,7 @@
     </script>
   </head>
 
-  <body class="zh zh_index" data-languages="[&quot;shell&quot;,&quot;javascript--node&quot;,&quot;go&quot;,&quot;python&quot;]">
+  <body class="zh zh_index" data-languages="[&quot;shell&quot;,&quot;javascript--node&quot;,&quot;php&quot;,&quot;go&quot;,&quot;python&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -301,6 +301,7 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">cURL</a>
               <a href="#" data-language-name="javascript--node">NodeJS</a>
+              <a href="#" data-language-name="php">PHP</a>
               <a href="#" data-language-name="go">Go</a>
               <a href="#" data-language-name="python">Python</a>
         </div>
@@ -491,6 +492,44 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'X-MM-APP-ID'</span> <span class="o">=&gt;</span> <span class="s1">'6e1dd7ce21874898b0b77b3288f006fa'</span><span class="p">,</span>
+    <span class="s1">'X-MM-TIMESTAMP'</span> <span class="o">=&gt;</span> <span class="s1">'1594127461389'</span><span class="p">,</span>
+    <span class="s1">'X-MM-SIGNATURE'</span> <span class="o">=&gt;</span> <span class="s1">'416D616F6F796778DAC3EEF2F179739D'</span><span class="p">,</span>
+    <span class="s1">'X-MM-NONCE'</span> <span class="o">=&gt;</span> <span class="s1">'2hjkr7iveci'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">([</span><span class="s1">'base_uri'</span> <span class="o">=&gt;</span> <span class="s1">'https://api.mimos.io:443/crypto-checkout/v1/'</span><span class="p">]);</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s2">"external_order_id"</span><span class="o">:</span> <span class="s2">"3qqx2a6vd96x67c91cplq"</span><span class="p">,</span>
+  <span class="s2">"price"</span><span class="o">:</span> <span class="s2">"599"</span><span class="p">,</span>
+  <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"iphone 11"</span><span class="p">,</span>
+  <span class="s2">"currency"</span><span class="o">:</span> <span class="s2">"USD"</span>
+  <span class="s1">'metadata'</span><span class="o">:</span> <span class="s1">'{"image_url": "https://images-na.ssl-images-amazon.com/images/I/61wjAvw5B2L._AC_SX425_.jpg","customer_id":"123456","customer_name":"my-user-name"}'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'charges'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="c1">// ...</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -698,6 +737,44 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'X-MM-APP-ID'</span> <span class="o">=&gt;</span> <span class="s1">'6e1dd7ce21874898b0b77b3288f006fa'</span><span class="p">,</span>
+    <span class="s1">'X-MM-TIMESTAMP'</span> <span class="o">=&gt;</span> <span class="s1">'1594643572157'</span><span class="p">,</span>
+    <span class="s1">'X-MM-SIGNATURE'</span> <span class="o">=&gt;</span> <span class="s1">'B0499D4EDF0D82A6B18C192311C0C97C'</span><span class="p">,</span>
+    <span class="s1">'X-MM-NONCE'</span> <span class="o">=&gt;</span> <span class="s1">'ttmx9loxhtl'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">([</span><span class="s1">'base_uri'</span> <span class="o">=&gt;</span> <span class="s1">'https://api.mimos.io:443/crypto-checkout/v1/'</span><span class="p">]);</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s2">"external_order_id"</span><span class="o">:</span> <span class="s2">"yz7ls58srfih1zmr4dw6y"</span><span class="p">,</span>
+  <span class="s2">"price"</span><span class="o">:</span> <span class="s2">"599"</span><span class="p">,</span>
+  <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"iphone 11"</span><span class="p">,</span>
+  <span class="s2">"currency"</span><span class="o">:</span> <span class="s2">"USD"</span>
+  <span class="s1">'metadata'</span><span class="o">:</span> <span class="s1">'{"image_url": "https://images-na.ssl-images-amazon.com/images/I/61wjAvw5B2L._AC_SX425_.jpg","customer_id":"123456","customer_name":"my-user-name"}'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'charges'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="c1">// ...</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -988,6 +1065,35 @@ curl <span class="nt">-X</span> PUT https://api.mimos.io/crypto-checkout/v1/char
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
 
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">([</span><span class="s1">'base_uri'</span> <span class="o">=&gt;</span> <span class="s1">'https://api.mimos.io:443/crypto-checkout/v1/'</span><span class="p">]);</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'PUT'</span><span class="p">,</span><span class="s1">'{orderIdentifier}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...</span>
+
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -1168,6 +1274,33 @@ curl <span class="nt">-X</span> GET https://api.mimos.io/crypto-checkout/v1/char
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
 
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">([</span><span class="s1">'base_uri'</span> <span class="o">=&gt;</span> <span class="s1">'https://api.mimos.io:443/crypto-checkout/v1/'</span><span class="p">]);</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'{orderIdentifier}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...</span>
+
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -1225,7 +1358,37 @@ curl <span class="nt">-X</span> GET https://api.mimos.io/crypto-checkout/v1/char
 
 <p>200 Response, show_details = false</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code></code></pre></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"merchant_id"</span><span class="p">:</span><span class="s2">"117510825734795264"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order_id"</span><span class="p">:</span><span class="s2">"37870665871618048"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order_identifier"</span><span class="p">:</span><span class="s2">"3v9YNZzCpG41vgz5kCjwyK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_order_id"</span><span class="p">:</span><span class="s2">"c3yo4kmimhw0v8924ch36m9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"iphone 11"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="s2">"99"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"remain_amount"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"CNY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="s2">"ethereum"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"FIXED_VALUE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1594641884350"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="s2">"1594642184350"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"CANCEL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sub_state"</span><span class="p">:</span><span class="s2">"UNDERPAID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="s2">"{</span><span class="se">\"</span><span class="s2">image_url</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">https://images-na.ssl-images-amazon.com/images/I/61wjAvw5B2L._AC_SX425_.jpg</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">customer_id</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">123456</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">customer_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">my-user-name</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="s2">"https://w.mimos.io/crypto-checkout/3v9YNZzCpG41vgz5kCjwyK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"required_info"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"bill_address"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"bill_address"</span><span class="p">:</span><span class="s2">"test@aerohive.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipient_name"</span><span class="p">:</span><span class="s2">"test-new-api"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"crypto_amount"</span><span class="p">:</span><span class="s2">"0.057915"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"crypto_currency"</span><span class="p">:</span><span class="s2">"ETH"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>200 Response, show_details = true</p>
 </blockquote>
@@ -2933,6 +3096,7 @@ signatureVal <span class="o">=</span> HmacSHA256<span class="o">(</span>stringB,
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">cURL</a>
                 <a href="#" data-language-name="javascript--node">NodeJS</a>
+                <a href="#" data-language-name="php">PHP</a>
                 <a href="#" data-language-name="go">Go</a>
                 <a href="#" data-language-name="python">Python</a>
           </div>
