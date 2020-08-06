@@ -21,7 +21,7 @@ logging_slate:
 
 convert_swagger_to_slate:
 	@echo "Convert swagger spec to slate"
-	widdershins --search true --expandBody true --language_tabs 'shell:cURL' 'javascript--node:NodeJS' 'go:Go' 'python:Python' 'java:Java' --summary $(CURDIR)/spec/mimos_pay.json -o $(CURDIR)/spec/mimos_pay.md
+	widdershins --search true --expandBody true --language_tabs 'shell:cURL' 'javascript--node:NodeJS' 'php:PHP' 'csharp:C#' 'go:Go' 'python:Python' 'java:Java' --summary $(CURDIR)/spec/mimos_pay.json -o $(CURDIR)/spec/mimos_pay.md
 
 build_docker_image:
 	@echo "Build docker image..."

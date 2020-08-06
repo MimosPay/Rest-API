@@ -110,6 +110,47 @@ fetch('https://api.mimos.io/crypto-checkout/v1/charges',
 
 ```
 
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+    'X-MM-APP-ID' => '6e1dd7ce21874898b0b77b3288f006fa',
+    'X-MM-TIMESTAMP' => '1594127461389',
+    'X-MM-SIGNATURE' => '416D616F6F796778DAC3EEF2F179739D',
+    'X-MM-NONCE' => '2hjkr7iveci',
+);
+
+$client = new \GuzzleHttp\Client(['base_uri' => 'https://api.mimos.io:443/crypto-checkout/v1/']);
+
+// Define array of request body.
+$request_body = array(
+  "external_order_id": "3qqx2a6vd96x67c91cplq",
+  "price": "599",
+  "name": "iphone 11",
+  "currency": "USD"
+  'metadata': '{"image_url": "https://images-na.ssl-images-amazon.com/images/I/61wjAvw5B2L._AC_SX425_.jpg","customer_id":"123456","customer_name":"my-user-name"}',
+);
+
+try {
+    $response = $client->request('POST','charges', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+ // ...
+
+```
+
 ```go
 package main
 

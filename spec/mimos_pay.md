@@ -3,12 +3,16 @@ title: Mimos Commerce API v1.0.0
 language_tabs:
   - shell: cURL
   - nodejs: NodeJS
+  - php: PHP
+  - csharp: C#
   - go: Go
   - python: Python
   - java: Java
 language_clients:
   - shell: ""
   - nodejs: ""
+  - php: ""
+  - csharp: ""
   - go: ""
   - python: ""
   - java: ""
@@ -69,6 +73,95 @@ fetch('http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}',
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+/// <<summary>>
+/// Example of Http Client
+/// <</summary>>
+public class HttpExample
+{
+    private HttpClient Client { get; set; }
+
+    /// <<summary>>
+    /// Setup http client
+    /// <</summary>>
+    public HttpExample()
+    {
+      Client = new HttpClient();
+    }
+    
+    /// Make a dummy request
+    public async Task MakeGetRequest()
+    {
+      string url = "http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}";
+      var result = await GetAsync(url);
+    }
+
+    /// Performs a GET Request
+    public async Task GetAsync(string url)
+    {
+        //Start the request
+        HttpResponseMessage response = await Client.GetAsync(url);
+
+        //Validate result
+        response.EnsureSuccessStatusCode();
+
+    }
+    
+    
+    
+    
+    /// Deserialize object from request response
+    private async Task DeserializeObject(HttpResponseMessage response)
+    {
+        //Read body 
+        string responseBody = await response.Content.ReadAsStringAsync();
+
+        //Deserialize Body to object
+        var result = JsonConvert.DeserializeObject(responseBody);
+    }
+}
 
 ```
 
@@ -297,6 +390,119 @@ fetch('http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}',
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('PUT','http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+/// <<summary>>
+/// Example of Http Client
+/// <</summary>>
+public class HttpExample
+{
+    private HttpClient Client { get; set; }
+
+    /// <<summary>>
+    /// Setup http client
+    /// <</summary>>
+    public HttpExample()
+    {
+      Client = new HttpClient();
+    }
+    
+    
+    
+    /// Make a dummy request
+    public async Task MakePutRequest()
+    {
+      int id = 1;
+      string url = "http://localhost:8081/crypto-checkout/v1/charges/{orderIdentifier}";
+
+      
+      string json = @"{
+  ""customer_name"": ""string"",
+  ""bill_address"": ""string"",
+  ""payment_method"": ""string""
+}";
+      ChargePublicUpdateDto content = JsonConvert.DeserializeObject(json);
+      var result = await PutAsync(id, content, url);
+      
+          
+    }
+
+    /// Performs a PUT Request
+    public async Task PutAsync(int id, ChargePublicUpdateDto content, string url)
+    {
+        //Serialize Object
+        StringContent jsonContent = SerializeObject(content);
+
+        //Execute PUT request
+        HttpResponseMessage response = await Client.PutAsync(url + $"/{id}", jsonContent);
+
+        //Return response
+        return await DeserializeObject(response);
+    }
+    
+    
+    /// Serialize an object to Json
+    private StringContent SerializeObject(ChargePublicUpdateDto content)
+    {
+        //Serialize Object
+        string jsonObject = JsonConvert.SerializeObject(content);
+
+        //Create Json UTF8 String Content
+        return new StringContent(jsonObject, Encoding.UTF8, "application/json");
+    }
+    
+    /// Deserialize object from request response
+    private async Task DeserializeObject(HttpResponseMessage response)
+    {
+        //Read body 
+        string responseBody = await response.Content.ReadAsStringAsync();
+
+        //Deserialize Body to object
+        var result = JsonConvert.DeserializeObject(responseBody);
+    }
+}
 
 ```
 
@@ -554,6 +760,127 @@ fetch('http://localhost:8081/crypto-checkout/v1/charges',
 
 ```
 
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+    'X-MM-APP-ID' => '6e1dd7ce21874898b0b77b3288f006fa',
+    'X-MM-TIMESTAMP' => '1594127461389',
+    'X-MM-SIGNATURE' => '416D616F6F796778DAC3EEF2F179739D',
+    'X-MM-NONCE' => '2hjkr7iveci',
+);
+
+$client = new \GuzzleHttp\Client(['base_uri' => 'https://api.dev.mimos.io:443/crypto-checkout/v1/']);
+
+// Define array of request body.
+$request_body = array(
+  "external_order_id": "3qqx2a6vd96x67c91cplq",
+  "price": "599",
+  "name": "iphone 11",
+  "currency": "USD"
+  'metadata': '{"image_url": "https://images-na.ssl-images-amazon.com/images/I/61wjAvw5B2L._AC_SX425_.jpg","customer_id":"123456","customer_name":"my-user-name"}',
+);
+
+try {
+    $response = $client->request('POST','charges', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+/// <<summary>>
+/// Example of Http Client
+/// <</summary>>
+public class HttpExample
+{
+    private HttpClient Client { get; set; }
+
+    /// <<summary>>
+    /// Setup http client
+    /// <</summary>>
+    public HttpExample()
+    {
+      Client = new HttpClient();
+    }
+    
+    
+    /// Make a dummy request
+    public async Task MakePostRequest()
+    {
+      string url = "http://localhost:8081/crypto-checkout/v1/charges";
+      
+      string json = @"{
+  ""metadata"": ""string"",
+  ""price"": 0,
+  ""name"": ""string"",
+  ""external_order_id"": ""string"",
+  ""currency"": ""string"",
+  ""type"": ""string""
+}";
+      ChargeCreateDto content = JsonConvert.DeserializeObject(json);
+      await PostAsync(content, url);
+      
+      
+    }
+
+    /// Performs a POST Request
+    public async Task PostAsync(ChargeCreateDto content, string url)
+    {
+        //Serialize Object
+        StringContent jsonContent = SerializeObject(content);
+
+        //Execute POST request
+        HttpResponseMessage response = await Client.PostAsync(url, jsonContent);
+    }
+    
+    
+    
+    /// Serialize an object to Json
+    private StringContent SerializeObject(ChargeCreateDto content)
+    {
+        //Serialize Object
+        string jsonObject = JsonConvert.SerializeObject(content);
+
+        //Create Json UTF8 String Content
+        return new StringContent(jsonObject, Encoding.UTF8, "application/json");
+    }
+    
+    /// Deserialize object from request response
+    private async Task DeserializeObject(HttpResponseMessage response)
+    {
+        //Read body 
+        string responseBody = await response.Content.ReadAsStringAsync();
+
+        //Deserialize Body to object
+        var result = JsonConvert.DeserializeObject(responseBody);
+    }
+}
+
+```
+
 ```go
 package main
 
@@ -585,54 +912,17 @@ func main() {
 ```
 
 ```python
-import json
 import requests
-import hashlib
-
-appId = '9b0798f2971148ba9828820612ae34bb'
-appKey = 'gPGZwIu7r5bVP6B8q0HDrEtpM8VOqkTEjXkdfh4lGjYUum7h5ohYoJEfcmaxVork'
-timestamp = 1595497196656
-
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'X-MM-APP-ID': appId,
-  'X-MM-TIMESTAMP': "{}".format(timestamp),
-  'X-MM-SIGNATURE': 'B0499D4EDF0D82A6B18C192311C0C97C',
-  'X-MM-NONCE': 'ttmx9loxhtl'
+  'X-MM-APP-ID': 'string',
+  'X-MM-TIMESTAMP': '0',
+  'X-MM-SIGNATURE': 'string',
+  'X-MM-NONCE': 'string'
 }
 
-payload = {
-  "metadata": "{\"image_url\":\"https://images-na.ssl-images-amazon.com/images/I/61wjAvw5B2L._AC_SX425_.jpg\",\"customer_id\":\"123456\",\"customer_name\":\"my-user-name\"}",
-  "price": "599",
-  "name": "iphone 11",
-  "external_order_id": "order-ad-{}".format(timestamp),
-  "currency": "USD"
-}
-
-total = {'X-MM-APP-ID': headers['X-MM-APP-ID'], 'X-MM-NONCE': headers['X-MM-NONCE'],
-         'X-MM-TIMESTAMP': headers['X-MM-TIMESTAMP']}
-
-# add payload TotalPrapameter
-for k in list(payload.keys()):
-   total[k]=payload[k]
-
-t_keys = list(total.keys())
-t_keys.sort()
-
-stringA = ""
-for k in t_keys :
-  stringA+= "{}={}&".format(k, total[k])
-
-stringA+= "key={}".format(appKey)
-
-m = hashlib.md5()
-m.update(stringA.encode("utf-8"))
-h = m.hexdigest().upper()
-
-headers['X-MM-SIGNATURE'] = h
-
-r = requests.post('https://api.dev.mimos.io/crypto-checkout/v1/charges', data = json.dumps(payload), headers = headers)
+r = requests.post('http://localhost:8081/crypto-checkout/v1/charges', headers = headers)
 
 print(r.json())
 

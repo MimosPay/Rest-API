@@ -4,6 +4,7 @@ title: I18n.t(:title)
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: cURL
   - javascript--node: NodeJS
+  - php: PHP
   - go: Go
   - python: Python
 
