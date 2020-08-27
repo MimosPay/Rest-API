@@ -213,8 +213,8 @@ print(r.json())
 |price|number|true|I18n.t('field.sku_local_price')|
 |currency|string|true|I18n.t('field.sku_local_currency')[I18n.t('field.supported_fiat_currencies')](#fiat-currencies)|
 |metadata|string|false|I18n.t('field.metadata')<br/>I18n.t('field.metadata_note')<ul><li>image_url: I18n.t('field.metadata_url')</ul></li>|
-|success_redirect_url|string|I18n.t('field.override_success_redirect_url')|
-|failure_redirect_url|string|I18n.t('field.override_failure_redirect_url')|
+|success_redirect_url|string|false|I18n.t('field.override_success_redirect_url')|
+|failure_redirect_url|string|false|I18n.t('field.override_failure_redirect_url')|
 |webhook_url|string|false|I18n.t('field.override_webhook_url')|
 
 ### I18n.t(:http_response) {#create-a-charge-response}
