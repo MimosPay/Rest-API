@@ -104,3 +104,6 @@ en:
     bill_address: "Customer email address to receive payment or refund notifications"
     customer_name: "Customer name"
     show_details: "Show details or not, default as true/yes"
+    override_success_redirect_url: "Override the redirect URL for the successful payment"
+    override_failure_redirect_url: "Override the redirect URL for the unsuccessful payment"
+    override_webhook_url: "Override the webhook URL"

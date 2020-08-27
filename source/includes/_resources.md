@@ -158,8 +158,8 @@ I18n.t('resource.number_note2')
 |sub_state|string|The charge sub state:<ul><li>NONE</li><li>EXPIRED</li><li>UNDERPAID</li><li>OVERPAID</li></ul>|
 |metadata|string|Metadata associated with the charge|
 |charge_url|string|MimosPay Hosted charge URL|
-|redirect_url|string|Merchant Hosted payment success redirect URL|
-|cancel_url|string|Merchant Hosted payment failure redirect URL|
+|success_redirect_url|string|Merchant Hosted payment success redirect URL|
+|failure_redirect_url|string|Merchant Hosted payment failure redirect URL|
 |crypto_amount|number|Price in crypto currency|
 |crypto_currency|string|The crypto currency code, in uppercase. Must be a [supported currency](#crypto-currencies)|
 |type|string|The type of charge,<ul><li>FIXED_VALUE</li><li>ANY_VALUE</li></ul>|

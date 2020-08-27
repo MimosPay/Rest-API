@@ -104,3 +104,6 @@ zh:
     bill_address: "客户电子邮箱地址，用于接收支付或是退款状态通知"
     customer_name: "客户名"
     show_details: "显示详细信息，默认：是"
+    override_success_redirect_url: "设置（覆盖）支付成功后的跳转地址"
+    override_failure_redirect_url: "设置（覆盖）支付失败后的跳转地址"
+    override_webhook_url: "设置（覆盖）Webhook回调地址"
