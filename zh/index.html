@@ -940,6 +940,24 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <td>false</td>
 <td>商户自定义内容，JSON格式并字符串化<br/>MimosPay支持的字段，如下：<ul><li>image_url: 客户将在收银台页面看到的图片缩略图，地址格式应以<code>http(s)</code>开头，并且以后缀作为结尾<code>jpg&#124;gif&#124;png&#124;jpeg&#124;svg</code></ul></li></td>
 </tr>
+<tr>
+<td>success_redirect_url</td>
+<td>string</td>
+<td>设置（覆盖）支付成功后的跳转地址</td>
+<td></td>
+</tr>
+<tr>
+<td>failure_redirect_url</td>
+<td>string</td>
+<td>设置（覆盖）支付失败后的跳转地址</td>
+<td></td>
+</tr>
+<tr>
+<td>webhook_url</td>
+<td>string</td>
+<td>false</td>
+<td>设置（覆盖）Webhook回调地址</td>
+</tr>
 </tbody></table>
 <h3 id='create-a-charge-response'>请求响应</h3>
 <blockquote>
@@ -1872,12 +1890,12 @@ signatureVal <span class="o">=</span> HmacSHA256<span class="o">(</span>stringB,
 <td>MimosPay Hosted charge URL</td>
 </tr>
 <tr>
-<td>redirect_url</td>
+<td>success_redirect_url</td>
 <td>string</td>
 <td>Merchant Hosted payment success redirect URL</td>
 </tr>
 <tr>
-<td>cancel_url</td>
+<td>failure_redirect_url</td>
 <td>string</td>
 <td>Merchant Hosted payment failure redirect URL</td>
 </tr>

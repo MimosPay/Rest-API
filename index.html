@@ -940,6 +940,24 @@ curl <span class="nt">-X</span> POST https://api.mimos.io/crypto-checkout/v1/cha
 <td>false</td>
 <td>The stringify of JSON value by merchant defined.<br/>MimosPay supported fields:<ul><li>image_url: the image will display on the customer page if the URL start with <code>http(s)</code> and end with <code>jpg&#124;gif&#124;png&#124;jpeg&#124;svg</code></ul></li></td>
 </tr>
+<tr>
+<td>success_redirect_url</td>
+<td>string</td>
+<td>Override the redirect URL for the successful payment</td>
+<td></td>
+</tr>
+<tr>
+<td>failure_redirect_url</td>
+<td>string</td>
+<td>Override the redirect URL for the unsuccessful payment</td>
+<td></td>
+</tr>
+<tr>
+<td>webhook_url</td>
+<td>string</td>
+<td>false</td>
+<td>Override the webhook URL</td>
+</tr>
 </tbody></table>
 <h3 id='create-a-charge-response'>HTTP Responses</h3>
 <blockquote>
@@ -1872,12 +1890,12 @@ Since some libraries and languages don't deserialize the JSON,
 <td>MimosPay Hosted charge URL</td>
 </tr>
 <tr>
-<td>redirect_url</td>
+<td>success_redirect_url</td>
 <td>string</td>
 <td>Merchant Hosted payment success redirect URL</td>
 </tr>
 <tr>
-<td>cancel_url</td>
+<td>failure_redirect_url</td>
 <td>string</td>
 <td>Merchant Hosted payment failure redirect URL</td>
 </tr>
